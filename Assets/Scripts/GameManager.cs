@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
     [HideInInspector] public bool isPlaying;
+
+    public static GameManager instance;
     public bool isLocalGame;
 
-    void Awake()
+    private void Awake()
     {
-        isPlaying = true;
-        
+        isPlaying = true;     
 
         if (instance == null)
         { 
             instance = this; 
         }
+
         else if (instance == this)
         { 
             Destroy(gameObject); 

@@ -214,8 +214,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abd960a01e1109499c51ed7b837f21f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSpawnChance: 50
+  maxSpawnChance: 100
   growDuration: 5
+  bottomPrefab: {fileID: 8501293464224280795}
   chance: 50
-  minSpawnChance: 0
-  maxSpawnChance: 0
   rootType: 1
+  carryOffset: 0.8
+  jumpPower: 1.25
+  jumpDuration: 1

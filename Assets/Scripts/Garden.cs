@@ -25,7 +25,6 @@ public class Garden : MonoBehaviour
                randomEmptyRidge.root = Instantiate(root, randomEmptyRidge.transform.position, root.transform.rotation, rootsParent);
             }
         }
-
         spawnCoroutine = StartCoroutine(spawnRoots());
     }
 
