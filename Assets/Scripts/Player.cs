@@ -17,7 +17,7 @@ public abstract class Player : MonoBehaviour
     protected Root pickedRoot;
     protected PlayerInput playerInput;
     protected InputAction move;
-    protected InputAction interract;
+    protected InputAction interact;
 
     protected PlayerState state = PlayerState.FreeMove;
     protected Animator animator;
@@ -34,8 +34,6 @@ public abstract class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(state);
-
         if (state != PlayerState.Digging)
         {
             rb.velocity = new Vector2(moveInput.x, moveInput.y) * speed;
@@ -44,7 +42,7 @@ public abstract class Player : MonoBehaviour
 
     public void OnPlayerMove() => moveInput = move.ReadValue<Vector2>();
 
-    public void OnInterract() => interract.started += Interract;
+    public void OnInterract() => interact.started += Interract;
 
     protected virtual void Interract(InputAction.CallbackContext ctx)
     {
@@ -61,11 +59,15 @@ public abstract class Player : MonoBehaviour
                 FinishDigging();
             }
         }
+        if (state == PlayerState.Carrying)
+        {
+
+        }
     }
 
-    private void FinishDigging()
+    public void FinishDigging()
     {
-        OnRootDigged?.Invoke(this, pickedRoot);
+        pickedRoot.JumpToPlayer(this);
     }
 
     public void SetState(PlayerState state)

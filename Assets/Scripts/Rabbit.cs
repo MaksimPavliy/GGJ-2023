@@ -10,12 +10,12 @@ public class Rabbit : Player
         if (GameManager.instance.isLocalGame)
         {
             move = playerInput.actions["MoveLocal"];
-            interract = playerInput.actions["InteractLocal"];
+            interact = playerInput.actions["InteractLocal"];
         }
         else
         {
             move = playerInput.actions["MoveMultiplayer"];
-            interract = playerInput.actions["InteractMultiplayer"];
+            interact = playerInput.actions["InteractMultiplayer"];
         }
     }
 

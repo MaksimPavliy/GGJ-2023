@@ -8,7 +8,7 @@ public class Cat : Player
     void Start()
     {
         move = playerInput.actions["MoveLocal"];
-        interract = playerInput.actions["InteractLocal"];
+        interact = playerInput.actions["InteractLocal"];
     }
 
     protected override void Interract(InputAction.CallbackContext ctx)
