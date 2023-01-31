@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isPlaying;
     public bool isLocalGame;
 
-    void Start()
+    void Awake()
     {
         isPlaying = true;
         
