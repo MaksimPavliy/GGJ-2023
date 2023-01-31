@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Rabbit : MonoBehaviour
+public class Rabbit : Player
 {
-    [SerializeField] private float speed;
-
-    private Vector2 moveInput;
-
-    // Start is called before the first frame update
     void Start()
     {
-
+        if (GameManager.instance.isLocalGame)
+        {
+            move = playerInput.actions["MoveLocal"];
+            interract = playerInput.actions["InteractLocal"];
+        }
+        else
+        {
+            move = playerInput.actions["MoveMultiplayer"];
+            interract = playerInput.actions["InteractMultiplayer"];
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Interract(InputAction.CallbackContext ctx)
     {
-        transform.Translate(new Vector2(moveInput.x, moveInput.y) * speed * Time.deltaTime);
-    }
+        base.Interract(ctx);
 
-    public void OnRabbitMove(InputAction.CallbackContext ctx) => moveInput = ctx.ReadValue<Vector2>();
+
+    }
 }

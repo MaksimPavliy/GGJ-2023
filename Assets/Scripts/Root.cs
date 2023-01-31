@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class Root : MonoBehaviour
 {
-    public RootTypes RootType => rootType;
+    [SerializeField] private float growDuration;
 
-    private RootTypes rootType;
+    public int chance;
 
-    // Start is called before the first frame update
+    [HideInInspector] public int minSpawnChance;
+    [HideInInspector] public int maxSpawnChance;
+
+    public RootType rootType;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
-    public enum RootTypes
+    public enum RootType
     {
         Carrot,
         Potato
