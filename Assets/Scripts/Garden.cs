@@ -11,7 +11,6 @@ public class Garden : MonoBehaviour
     [SerializeField] private Root rootObstacle;
     [SerializeField] private float spawnDelay = 2f;
 
-
     private Ridge randomEmptyRidge;
     private List<Ridge> emptyRidges = new List<Ridge>();
 

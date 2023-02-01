@@ -9,8 +9,9 @@ public abstract class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float minDistanceToDig;
-    [SerializeField] private float minDistanceToPot;
+    [SerializeField] private float minDistanceToCharacter;
     [SerializeField] private Pot pot;
+    [SerializeField] private List<Character> characters;
 
     protected Vector2 moveInput;
     protected Root pickedRoot;
@@ -66,12 +67,34 @@ public abstract class Player : MonoBehaviour
         }
         if (state == PlayerState.Carrying)
         {
-            if(Vector2.Distance(transform.position, pot.transform.position) <= minDistanceToPot && pot.rootInRecipe(pickedRoot.rootType))
+            if(IsCharacterClose())
             {
                 state = PlayerState.FreeMove;
                 pickedRoot.JumpToPot(pot.RootTargetTransform.position);
             }
         }
+    }
+
+    private bool IsCharacterClose()
+    {
+        if (GameManager.instance.gameMode == GameManager.GameMode.StoryMode)
+        {
+            if(Vector2.Distance(transform.position, characters[0].transform.position) < minDistanceToCharacter)
+            {
+                return true;
+            }
+        }
+        else 
+        {
+            foreach (var character in characters)
+            {
+                if (Vector2.Distance(transform.position, character.transform.position) < minDistanceToCharacter)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void FinishDigging()
