@@ -162,8 +162,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   minDistanceToDig: 0.9
-  minDistanceToPot: 0
+  minDistanceToCharacter: 0
   pot: {fileID: 0}
+  characters: []
 --- !u!61 &1435378327
 BoxCollider2D:
   m_ObjectHideFlags: 0
