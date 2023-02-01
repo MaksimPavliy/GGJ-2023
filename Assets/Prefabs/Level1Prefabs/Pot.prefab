@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6453442012253676376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 437627274932323589}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2135585597343286014, guid: eed45a33cd08446c8b88325cf82fc52f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f061b4bd0275bc4eb60f2af31e7375a, type: 3}
   m_Color: {r: 0.6509434, g: 0.62944996, b: 0.62944996, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,12 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d998e47ccd0cef4b94d296a1c1709cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potRoots:
-  - {fileID: 0}
-  - {fileID: 0}
-  rootUIHolders:
-  - {fileID: 0}
-  - {fileID: 0}
   rootTargetTransform: {fileID: 437627274932323589}
 --- !u!1 &6921172608477694010
 GameObject:

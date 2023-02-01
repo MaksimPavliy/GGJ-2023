@@ -25,6 +25,11 @@ public class Garden : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             FindRandomEmptyRidge();
+            if (!randomEmptyRidge.canHaveObstacle)
+            {
+                i--;
+                continue;
+            }
             randomEmptyRidge.isEmpty = false;
             
             randomEmptyRidge.root = null;
@@ -56,44 +61,11 @@ public class Garden : MonoBehaviour
             FindRandomEmptyRidge();
             if (randomEmptyRidge)
             {
+                root = Root.SpawnRootWithChance(roots);
                 randomEmptyRidge.isEmpty = false;
-                root = SpawnRootWithChance(roots);
-                root.rootLocation = randomEmptyRidge;
                 randomEmptyRidge.root = Instantiate(root, randomEmptyRidge.transform.position + root.spawnOffset, root.transform.rotation, rootsParent);
             }
         }
-    }
-
-    private Root SpawnRootWithChance(List<Root> roots)
-    {
-        int chanceSum = 0;
-        for (int i = 0; i < roots.Count; i++)
-        {
-            Root root = roots[i];
-            chanceSum += root.chance;
-            if (i == 0)
-            {
-                root.minSpawnChance = 0;
-                root.maxSpawnChance = root.chance;
-            }
-            else
-            {
-                root.minSpawnChance = roots[i - 1].maxSpawnChance;
-                root.maxSpawnChance = root.minSpawnChance + root.chance;
-            }
-        }
-
-        int rand = Random.Range(0, chanceSum);
-
-        for (int i = 0; i < roots.Count; i++)
-        {
-            Root root = roots[i];
-            if (rand >= root.minSpawnChance && rand < root.maxSpawnChance)
-            {
-                return root;
-            }
-        }
-        return null;
     }
 }
 

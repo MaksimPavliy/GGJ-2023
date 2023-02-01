@@ -1329,11 +1329,12 @@ MonoBehaviour:
   - {fileID: 3558014987364307057}
   - {fileID: 3558014987370642688}
   roots:
-  - {fileID: 4422955189008725023, guid: f52f83d3dd5f83041a94cf96d3ab06c5, type: 3}
-  - {fileID: 685872229108228104, guid: 949a0eddc5423cb408710837802235ec, type: 3}
+  - {fileID: 1996481583, guid: f52f83d3dd5f83041a94cf96d3ab06c5, type: 3}
+  - {fileID: 1173485035, guid: ccb4ee7c1c137f34a83d0f980c6cbbb4, type: 3}
+  - {fileID: 1083640873, guid: 949a0eddc5423cb408710837802235ec, type: 3}
   rootsParent: {fileID: 0}
   obstaclesSpawnAmount: 1
-  rootObstacle: {fileID: 6904206132353142185, guid: 72a8a50c8cdacd94d81e0b1b220f42af, type: 3}
+  rootObstacle: {fileID: -7828024099860124261, guid: 72a8a50c8cdacd94d81e0b1b220f42af, type: 3}
   spawnDelay: 2
 --- !u!1 &3558014987635321346
 GameObject:
@@ -3580,11 +3581,12 @@ MonoBehaviour:
   - {fileID: 3558014987093995643}
   - {fileID: 3558014988593787271}
   roots:
-  - {fileID: 4422955189008725023, guid: f52f83d3dd5f83041a94cf96d3ab06c5, type: 3}
-  - {fileID: 685872229108228104, guid: 949a0eddc5423cb408710837802235ec, type: 3}
+  - {fileID: 1996481583, guid: f52f83d3dd5f83041a94cf96d3ab06c5, type: 3}
+  - {fileID: 1173485035, guid: ccb4ee7c1c137f34a83d0f980c6cbbb4, type: 3}
+  - {fileID: 1083640873, guid: 949a0eddc5423cb408710837802235ec, type: 3}
   rootsParent: {fileID: 0}
   obstaclesSpawnAmount: 1
-  rootObstacle: {fileID: 6904206132353142185, guid: 72a8a50c8cdacd94d81e0b1b220f42af, type: 3}
+  rootObstacle: {fileID: -7828024099860124261, guid: 72a8a50c8cdacd94d81e0b1b220f42af, type: 3}
   spawnDelay: 2
 --- !u!1 &3558014988683708501
 GameObject:

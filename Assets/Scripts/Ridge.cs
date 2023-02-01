@@ -9,7 +9,7 @@ public class Ridge : MonoBehaviour
     [HideInInspector] public BoxCollider2D bc;
 
     public Root root { get; set; }
-    public RidgeWeatherState ridgeWeatherState;
+    public bool canHaveObstacle;
 
     private void Awake()
     {
@@ -36,11 +36,5 @@ public class Ridge : MonoBehaviour
         {
             isEmpty = !isEmpty;
         }
-    }
-
-    public enum RidgeWeatherState
-    {
-        Default,
-        Dry
     }
 }
