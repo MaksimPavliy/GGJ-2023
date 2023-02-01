@@ -8,7 +8,6 @@ public class Root : MonoBehaviour
 {
     [HideInInspector] public int minSpawnChance;
     [HideInInspector] public int maxSpawnChance;
-    [SerializeField] private float growDuration;
     [SerializeField] private Transform bottomPrefab;
     [SerializeField] private float jumpPower = 1.5f;
     [SerializeField] private float jumpDuration = 1;
@@ -19,16 +18,22 @@ public class Root : MonoBehaviour
     public static UnityAction<Root> OnRootAddedToPot;
     public static UnityAction<Root> OnRootRotten;
 
+    public Vector3 spawnOffset;
+    public float growDuration;
     public int chance;
     public RootType rootType;
     public float carryOffset = 0.5f;
 
     private int numOfJumps = 1;
     private bool hasGrown = false;
+    private Coroutine rotCorotine;
 
     private void Start()
     {
-        StartCoroutine(Grow());
+        if (rootType != RootType.ObstacleRoot)
+        {
+            StartCoroutine(Grow());
+        }
     }
 
     private IEnumerator Grow()
@@ -37,11 +42,12 @@ public class Root : MonoBehaviour
         yield return new WaitForSeconds(growDuration);
         hasGrown = true;
 
-        StartCoroutine(Rot());
+        rotCorotine = StartCoroutine(Rot());
     }
 
     private IEnumerator Rot()
     {
+        yield return new WaitForSeconds(rotDuration);
         float alpha = 1;
         float startingRoat = rotDuration;
 
@@ -61,6 +67,11 @@ public class Root : MonoBehaviour
 
     public void JumpToPlayer(Player player)
     {
+        StopCoroutine(rotCorotine);
+        for (int i = 0; i < renderers.Count; i++)
+        {
+            renderers[i].color = new Color(renderers[i].color.r, renderers[i].color.g, renderers[i].color.b, 1);
+        }
         Vector2 targetPos = new Vector2(player.transform.position.x, player.transform.position.y + carryOffset);
         transform.DOJump(targetPos, jumpPower, numOfJumps, jumpDuration).OnComplete(() => player.SetState(Player.PlayerState.Carrying));
         transform.SetParent(player.transform);

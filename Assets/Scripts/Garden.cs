@@ -8,8 +8,9 @@ public class Garden : MonoBehaviour
     [SerializeField] private List<Root> roots;
     [SerializeField] private Transform rootsParent;
     [SerializeField] private int obstaclesSpawnAmount;
-    [SerializeField] private GameObject rootObstacle;
+    [SerializeField] private Root rootObstacle;
     [SerializeField] private float spawnDelay = 2f;
+
 
     private Ridge randomEmptyRidge;
     private List<Ridge> emptyRidges = new List<Ridge>();
@@ -29,7 +30,7 @@ public class Garden : MonoBehaviour
 
             randomEmptyRidge.root = null;
             randomEmptyRidge.bc.isTrigger = false;
-            Instantiate(rootObstacle, randomEmptyRidge.transform.position, rootObstacle.transform.rotation, rootsParent);
+            Instantiate(rootObstacle, randomEmptyRidge.transform.position + rootObstacle.spawnOffset, rootObstacle.transform.rotation, rootsParent);
         }
     }
 
@@ -58,7 +59,7 @@ public class Garden : MonoBehaviour
             {
                 randomEmptyRidge.isEmpty = false;
                 root = SpawnRootWithChance(roots);
-                randomEmptyRidge.root = Instantiate(root, randomEmptyRidge.transform.position, root.transform.rotation, rootsParent);
+                randomEmptyRidge.root = Instantiate(root, randomEmptyRidge.transform.position + root.spawnOffset, root.transform.rotation, rootsParent);
             }
         }
     }

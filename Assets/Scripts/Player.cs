@@ -46,6 +46,10 @@ public abstract class Player : MonoBehaviour
 
     protected virtual void Interract(InputAction.CallbackContext ctx)
     {
+        if (!pickedRoot)
+        {
+            state = PlayerState.FreeMove;
+        }
         if (state == PlayerState.FreeMove)
         {
             if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)

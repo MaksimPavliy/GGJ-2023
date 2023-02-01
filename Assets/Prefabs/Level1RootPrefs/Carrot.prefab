@@ -132,14 +132,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpawnChance: 0
   maxSpawnChance: 50
-  growDuration: 2
   bottomPrefab: {fileID: 7904339449879799689}
   jumpPower: 1.25
   jumpDuration: 1
-  rotDuration: 10
+  rotDuration: 3
   renderers:
   - {fileID: 4437575606159975939}
   - {fileID: 2397048440679465509}
+  spawnOffset: {x: 0, y: -0.2, z: 0}
+  growDuration: 2
   chance: 50
   rootType: 0
   carryOffset: 0.8
