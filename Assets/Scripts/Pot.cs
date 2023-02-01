@@ -11,7 +11,6 @@ public class Pot : MonoBehaviour
     [SerializeField] private Transform rootTargetTransform;
 
     public Transform RootTargetTransform => rootTargetTransform;
-    private PotRoot rootToRefresh;
 
     void Start()
     {
@@ -35,7 +34,7 @@ public class Pot : MonoBehaviour
 
     private void RefreshUI(Root root)
     {
-        PotRoot rootToRefresh = potRoots.Find(x => x.rootType == root.rootType); 
+        PotRoot rootToRefresh = potRoots.Find(x => x.rootType == root.rootType);
         Destroy(root.gameObject);
         rootToRefresh.currentAmount++;
         rootToRefresh.amountText.text = rootToRefresh.currentAmount + " / " + rootToRefresh.requiredAmount;

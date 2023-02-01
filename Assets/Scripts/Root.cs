@@ -13,7 +13,7 @@ public class Root : MonoBehaviour
     [SerializeField] private float jumpPower = 1.5f;
     [SerializeField] private float jumpDuration = 1;
     [SerializeField] private float rotDuration = 5;
-    [SerializeField] private List<Renderer> renderers;
+    [SerializeField] private List<SpriteRenderer> renderers;
 
     public bool HasGrown => hasGrown;
     public static UnityAction<Root> OnRootAddedToPot;
@@ -42,32 +42,21 @@ public class Root : MonoBehaviour
 
     private IEnumerator Rot()
     {
-        yield return new WaitForSeconds(rotDuration / 2);
+        float alpha = 1;
+        float startingRoat = rotDuration;
 
-        float timeBeforeRot = rotDuration / 2;
-        float flickeringInterval = timeBeforeRot / 5;
-
-        while (timeBeforeRot > 0)
+        while (alpha > 0)
         {
             for (int i = 0; i < renderers.Count; i++)
             {
-                if (renderers[i].enabled)
-                {
-                    renderers[i].enabled = false;
-                    yield return new WaitForSeconds(0.1f);
-                }                
-                else
-                {
-                    renderers[i].enabled = true;
-                    yield return new WaitForSeconds(flickeringInterval);
-                }
+                renderers[i].color = new Color(renderers[i].color.r, renderers[i].color.g, renderers[i].color.b, alpha);
             }
-            timeBeforeRot -= flickeringInterval;
-            flickeringInterval -= flickeringInterval / 7.5f;
-            
+            startingRoat -= Time.deltaTime;
+            alpha = startingRoat / rotDuration;
+            yield return new WaitForEndOfFrame();
         }
         OnRootRotten?.Invoke(this);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void JumpToPlayer(Player player)
@@ -80,7 +69,12 @@ public class Root : MonoBehaviour
 
     public void JumpToPot(Vector3 targetPos)
     {
-        transform.DOJump(targetPos, jumpPower, numOfJumps, jumpDuration).OnComplete(() => OnRootAddedToPot?.Invoke(this));
+        transform.DOJump(targetPos, jumpPower, numOfJumps, jumpDuration).OnComplete(() => AddRootToPot());
+    }
+
+    private void AddRootToPot()
+    {       
+        OnRootAddedToPot?.Invoke(this);
     }
 
     public enum RootType
