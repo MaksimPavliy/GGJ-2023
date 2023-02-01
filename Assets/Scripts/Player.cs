@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInput), typeof(Animator), typeof(Rigidbody2D))]
 public abstract class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
@@ -29,13 +29,14 @@ public abstract class Player : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true;
     }
 
     private void FixedUpdate()
     {
         if (state != PlayerState.Digging)
         {
-            rb.velocity = new Vector2(moveInput.x, moveInput.y) * speed;
+            rb.MovePosition(rb.position + moveInput * speed * Time.deltaTime);
         }
     } 
 
@@ -50,6 +51,7 @@ public abstract class Player : MonoBehaviour
             if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
             {
                 state = PlayerState.Digging;
+                rb.velocity = Vector2.zero;
                 //animator.Play("Dig");
                 pickedRoot = closestRidge.root;
                 closestRidge.root = null;
@@ -63,7 +65,7 @@ public abstract class Player : MonoBehaviour
             if(Vector2.Distance(transform.position, pot.transform.position) <= minDistanceToPot && pot.rootInRecipe(pickedRoot.rootType))
             {
                 state = PlayerState.FreeMove;
-                pickedRoot.JumpToPot(pot);
+                pickedRoot.JumpToPot(pot.RootTargetTransform.position);
             }
         }
     }

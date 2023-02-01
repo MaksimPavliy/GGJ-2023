@@ -10,11 +10,14 @@ public class Root : MonoBehaviour
     [HideInInspector] public int maxSpawnChance;
     [SerializeField] private float growDuration;
     [SerializeField] private Transform bottomPrefab;
-    [SerializeField] private float jumpPower = 2;
+    [SerializeField] private float jumpPower = 1.5f;
     [SerializeField] private float jumpDuration = 1;
+    [SerializeField] private float rotDuration = 5;
+    [SerializeField] private List<Renderer> renderers;
 
     public bool HasGrown => hasGrown;
     public static UnityAction<Root> OnRootAddedToPot;
+    public static UnityAction<Root> OnRootRotten;
 
     public int chance;
     public RootType rootType;
@@ -25,19 +28,46 @@ public class Root : MonoBehaviour
 
     private void Start()
     {
-        Grow();
+        StartCoroutine(Grow());
     }
 
-    private void Grow()
+    private IEnumerator Grow()
     {
-        float timer = 0;
         transform.DOScale(1, growDuration);
-
-        while(timer < growDuration)
-        {
-            timer += Time.deltaTime;
-        }
+        yield return new WaitForSeconds(growDuration);
         hasGrown = true;
+
+        StartCoroutine(Rot());
+    }
+
+    private IEnumerator Rot()
+    {
+        yield return new WaitForSeconds(rotDuration / 2);
+
+        float timeBeforeRot = rotDuration / 2;
+        float flickeringInterval = timeBeforeRot / 5;
+
+        while (timeBeforeRot > 0)
+        {
+            for (int i = 0; i < renderers.Count; i++)
+            {
+                if (renderers[i].enabled)
+                {
+                    renderers[i].enabled = false;
+                    yield return new WaitForSeconds(0.1f);
+                }                
+                else
+                {
+                    renderers[i].enabled = true;
+                    yield return new WaitForSeconds(flickeringInterval);
+                }
+            }
+            timeBeforeRot -= flickeringInterval;
+            flickeringInterval -= flickeringInterval / 7.5f;
+            
+        }
+        OnRootRotten?.Invoke(this);
+        Destroy(gameObject);
     }
 
     public void JumpToPlayer(Player player)
@@ -48,15 +78,15 @@ public class Root : MonoBehaviour
         bottomPrefab.position = new Vector3(bottomPrefab.position.x, bottomPrefab.position.y, -1);
     }
 
-    public void JumpToPot(Pot pot)
+    public void JumpToPot(Vector3 targetPos)
     {
-        Vector2 targetPos = new Vector2(pot.transform.position.x, pot.transform.position.y);
         transform.DOJump(targetPos, jumpPower, numOfJumps, jumpDuration).OnComplete(() => OnRootAddedToPot?.Invoke(this));
     }
 
     public enum RootType
     {
         Carrot,
-        Potato
+        Potato,
+        ObstacleRoot
     }
 }

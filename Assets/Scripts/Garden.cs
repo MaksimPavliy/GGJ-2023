@@ -6,26 +6,31 @@ public class Garden : MonoBehaviour
 {
     [SerializeField] private List<Ridge> ridges;
     [SerializeField] private List<Root> roots;
-    [SerializeField] private int startSpawnAmount;
     [SerializeField] private Transform rootsParent;
-    
+    [SerializeField] private int obstaclesSpawnAmount;
+    [SerializeField] private GameObject rootObstacle;
+    [SerializeField] private float spawnDelay = 2f;
+
     private Ridge randomEmptyRidge;
-    private Root root;
     private List<Ridge> emptyRidges = new List<Ridge>();
-    private Coroutine spawnCoroutine;
 
     void Start()
     {
-        for(int i = 0; i < startSpawnAmount; i++) { 
+        SpawnRootObstaclesOnStart(obstaclesSpawnAmount);
+        StartCoroutine(SpawnRoots());
+    }
 
+    private void SpawnRootObstaclesOnStart(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
             FindRandomEmptyRidge();
-            if (randomEmptyRidge)
-            {
-               root = SpawnRootWithChance(roots);
-               randomEmptyRidge.root = Instantiate(root, randomEmptyRidge.transform.position, root.transform.rotation, rootsParent);
-            }
+            randomEmptyRidge.isEmpty = false;
+
+            randomEmptyRidge.root = null;
+            randomEmptyRidge.bc.isTrigger = false;
+            Instantiate(rootObstacle, randomEmptyRidge.transform.position, rootObstacle.transform.rotation, rootsParent);
         }
-        spawnCoroutine = StartCoroutine(spawnRoots());
     }
 
     private void FindRandomEmptyRidge()
@@ -37,33 +42,35 @@ public class Garden : MonoBehaviour
             return;
         }
         int rand = Random.Range(0, emptyRidges.Count);
-        emptyRidges[rand].isEmpty = false;
         randomEmptyRidge = emptyRidges[rand];
     }
 
-    private IEnumerator spawnRoots()
+    private IEnumerator SpawnRoots()
     {
+        Root root;
+
         while (GameManager.instance.isPlaying)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(spawnDelay);
 
             FindRandomEmptyRidge();
             if (randomEmptyRidge)
             {
+                randomEmptyRidge.isEmpty = false;
                 root = SpawnRootWithChance(roots);
                 randomEmptyRidge.root = Instantiate(root, randomEmptyRidge.transform.position, root.transform.rotation, rootsParent);
             }
         }
     }
 
-    private Root SpawnRootWithChance(List<Root> roots) 
+    private Root SpawnRootWithChance(List<Root> roots)
     {
         int chanceSum = 0;
-        for(int i = 0; i < roots.Count; i++)
+        for (int i = 0; i < roots.Count; i++)
         {
             Root root = roots[i];
             chanceSum += root.chance;
-            if(i == 0)
+            if (i == 0)
             {
                 root.minSpawnChance = 0;
                 root.maxSpawnChance = root.chance;
@@ -80,7 +87,7 @@ public class Garden : MonoBehaviour
         for (int i = 0; i < roots.Count; i++)
         {
             Root root = roots[i];
-            if(rand >= root.minSpawnChance && rand < root.maxSpawnChance)
+            if (rand >= root.minSpawnChance && rand < root.maxSpawnChance)
             {
                 return root;
             }

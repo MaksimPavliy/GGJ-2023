@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class Pot : MonoBehaviour
 {
     [SerializeField] private List<PotRoot> potRoots;
     [SerializeField] private List<Transform> rootUIHolders;
+    [SerializeField] private Transform rootTargetTransform;
 
+    public Transform RootTargetTransform => rootTargetTransform;
     private PotRoot rootToRefresh;
 
     void Start()
@@ -21,7 +24,9 @@ public class Pot : MonoBehaviour
 
     public bool rootInRecipe(Root.RootType rootType)
     {
-        if (potRoots.Find(x => x.rootType == rootType) != null)
+        PotRoot newRoot = potRoots.Find(x => x.rootType == rootType);
+
+        if (newRoot.currentAmount < newRoot.requiredAmount)
         {
             return true;
         }
@@ -29,11 +34,12 @@ public class Pot : MonoBehaviour
     }
 
     private void RefreshUI(Root root)
-    { 
-        rootToRefresh = potRoots.Find(x => x.rootType == root.rootType);
+    {
+        PotRoot rootToRefresh = potRoots.Find(x => x.rootType == root.rootType); 
         Destroy(root.gameObject);
         rootToRefresh.currentAmount++;
         rootToRefresh.amountText.text = rootToRefresh.currentAmount + " / " + rootToRefresh.requiredAmount;
+        rootToRefresh.amountText.transform.DOScale(1.35f, 0.3f).SetLoops(2, LoopType.Yoyo);     
     }
 }
 
