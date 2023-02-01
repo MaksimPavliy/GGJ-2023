@@ -43,6 +43,7 @@ public class Root : MonoBehaviour
         {
             growDuration *= 2;
         }
+        //add scale bounce on grow
         transform.DOScale(1.5f, growDuration);
         yield return new WaitForSeconds(growDuration);
         hasGrown = true;

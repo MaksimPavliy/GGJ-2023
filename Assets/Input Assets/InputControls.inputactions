@@ -6,7 +6,7 @@
             "id": "b78fe330-812c-49ac-8686-2ee134737c8c",
             "actions": [
                 {
-                    "name": "MoveLocal",
+                    "name": "MoveFirstPlayer",
                     "type": "Value",
                     "id": "134b4252-e624-4268-89ca-9ad93fa26302",
                     "expectedControlType": "Vector2",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MoveMultiplayer",
+                    "name": "MoveSecondPlayer",
                     "type": "Value",
                     "id": "6ece2c46-8b27-4676-9cc1-24a2d0e56961",
                     "expectedControlType": "Vector2",
@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "InteractLocal",
+                    "name": "InteractFirstPlayer",
                     "type": "Button",
                     "id": "e34dcd2a-84d8-4397-8070-5313256d38b3",
                     "expectedControlType": "Button",
@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "InteractMultiplayer",
+                    "name": "InteractSecondPlayer",
                     "type": "Button",
                     "id": "0892fbfa-1448-4d10-bff7-77e6b9e6018f",
                     "expectedControlType": "Button",
@@ -50,7 +50,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveLocal",
+                    "action": "MoveFirstPlayer",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -61,7 +61,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveLocal",
+                    "action": "MoveFirstPlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -72,7 +72,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveLocal",
+                    "action": "MoveFirstPlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -83,7 +83,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveLocal",
+                    "action": "MoveFirstPlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -94,7 +94,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveLocal",
+                    "action": "MoveFirstPlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -105,7 +105,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "InteractLocal",
+                    "action": "InteractFirstPlayer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -116,7 +116,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveMultiplayer",
+                    "action": "MoveSecondPlayer",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -127,7 +127,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveMultiplayer",
+                    "action": "MoveSecondPlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -138,7 +138,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveMultiplayer",
+                    "action": "MoveSecondPlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -149,7 +149,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveMultiplayer",
+                    "action": "MoveSecondPlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -160,7 +160,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveMultiplayer",
+                    "action": "MoveSecondPlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -171,7 +171,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "InteractMultiplayer",
+                    "action": "InteractSecondPlayer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

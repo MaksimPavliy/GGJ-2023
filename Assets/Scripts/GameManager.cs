@@ -7,11 +7,15 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isPlaying;
 
     public static GameManager instance;
-    public bool isLocalGame;
+    public GameMode gameMode = GameMode.StoryMode;
+    public NetworkMode networkMode = NetworkMode.Local;
+    public float levelTimer;
 
     private void Awake()
     {
-        isPlaying = true;     
+        isPlaying = true;
+
+        StartCoroutine(DecreaseLeveTimer());
 
         if (instance == null)
         { 
@@ -22,5 +26,35 @@ public class GameManager : MonoBehaviour
         { 
             Destroy(gameObject); 
         }
+    }
+
+    private IEnumerator DecreaseLeveTimer()
+    {
+        while(levelTimer > 0)
+        {
+            levelTimer -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private void SetGameMode(GameMode gameMode)
+    {
+        this.gameMode = gameMode;
+    }
+
+    private void SetNetworkMode(NetworkMode networkMode)
+    {
+        this.networkMode = networkMode;
+    }
+
+    public enum GameMode
+    {
+        StoryMode,
+        Versus
+    }
+    public enum NetworkMode
+    {
+        Local,
+        Multiplayer
     }
 }
