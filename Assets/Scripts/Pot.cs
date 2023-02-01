@@ -23,9 +23,7 @@ public class Pot : MonoBehaviour
 
     public bool rootInRecipe(Root.RootType rootType)
     {
-        PotRoot newRoot = potRoots.Find(x => x.rootType == rootType);
-
-        if (newRoot.currentAmount < newRoot.requiredAmount)
+        if(potRoots.Find(x => x.rootType == rootType))
         {
             return true;
         }
@@ -36,7 +34,10 @@ public class Pot : MonoBehaviour
     {
         PotRoot rootToRefresh = potRoots.Find(x => x.rootType == root.rootType);
         Destroy(root.gameObject);
-        rootToRefresh.currentAmount++;
+        if (rootToRefresh.currentAmount < rootToRefresh.requiredAmount)
+        {
+            rootToRefresh.currentAmount++;
+        }
         rootToRefresh.amountText.text = rootToRefresh.currentAmount + " / " + rootToRefresh.requiredAmount;
         rootToRefresh.amountText.transform.DOScale(1.35f, 0.3f).SetLoops(2, LoopType.Yoyo);     
     }

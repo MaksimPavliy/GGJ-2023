@@ -27,7 +27,7 @@ public class Garden : MonoBehaviour
         {
             FindRandomEmptyRidge();
             randomEmptyRidge.isEmpty = false;
-
+            
             randomEmptyRidge.root = null;
             randomEmptyRidge.bc.isTrigger = false;
             Instantiate(rootObstacle, randomEmptyRidge.transform.position + rootObstacle.spawnOffset, rootObstacle.transform.rotation, rootsParent);
@@ -59,6 +59,7 @@ public class Garden : MonoBehaviour
             {
                 randomEmptyRidge.isEmpty = false;
                 root = SpawnRootWithChance(roots);
+                root.rootLocation = randomEmptyRidge;
                 randomEmptyRidge.root = Instantiate(root, randomEmptyRidge.transform.position + root.spawnOffset, root.transform.rotation, rootsParent);
             }
         }

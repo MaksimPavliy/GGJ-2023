@@ -27,6 +27,7 @@ public class Root : MonoBehaviour
     private int numOfJumps = 1;
     private bool hasGrown = false;
     private Coroutine rotCorotine;
+    public Ridge rootLocation;
 
     private void Start()
     {
@@ -38,7 +39,11 @@ public class Root : MonoBehaviour
 
     private IEnumerator Grow()
     {
-        transform.DOScale(1, growDuration);
+        if(rootLocation.ridgeWeatherState == Ridge.RidgeWeatherState.Dry)
+        {
+            growDuration *= 2;
+        }
+        transform.DOScale(1.5f, growDuration);
         yield return new WaitForSeconds(growDuration);
         hasGrown = true;
 
