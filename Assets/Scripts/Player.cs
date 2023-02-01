@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 
@@ -10,8 +9,8 @@ public abstract class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float minDistanceToDig;
-
-    public static UnityAction<Player, Root> OnRootDigged;
+    [SerializeField] private float minDistanceToPot;
+    [SerializeField] private Pot pot;
 
     protected Vector2 moveInput;
     protected Root pickedRoot;
@@ -48,7 +47,7 @@ public abstract class Player : MonoBehaviour
     {
         if (state == PlayerState.FreeMove)
         {
-            if (closestRidge && closestRidge.root && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
+            if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
             {
                 state = PlayerState.Digging;
                 //animator.Play("Dig");
@@ -61,7 +60,11 @@ public abstract class Player : MonoBehaviour
         }
         if (state == PlayerState.Carrying)
         {
-
+            if(Vector2.Distance(transform.position, pot.transform.position) <= minDistanceToPot && pot.rootInRecipe(pickedRoot.rootType))
+            {
+                state = PlayerState.FreeMove;
+                pickedRoot.JumpToPot(pot);
+            }
         }
     }
 

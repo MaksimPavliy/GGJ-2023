@@ -6,4 +6,13 @@ public class Ridge : MonoBehaviour
 {
     [HideInInspector] public bool isEmpty = true;
     public Root root { get; set; }
+
+    public bool CanBeDigged()
+    {
+        if(root && root.HasGrown)
+        {
+            return true;
+        }
+        return false;
+    }
 }

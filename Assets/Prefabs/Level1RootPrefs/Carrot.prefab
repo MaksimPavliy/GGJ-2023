@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 2276447759192945460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9020493342351332556}
@@ -134,11 +134,11 @@ MonoBehaviour:
   maxSpawnChance: 50
   growDuration: 5
   bottomPrefab: {fileID: 7904339449879799689}
+  jumpPower: 1.25
+  jumpDuration: 1
   chance: 50
   rootType: 0
   carryOffset: 0.8
-  jumpPower: 1.25
-  jumpDuration: 1
 --- !u!1 &3719689540845996408
 GameObject:
   m_ObjectHideFlags: 0
