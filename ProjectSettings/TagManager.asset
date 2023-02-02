@@ -13,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - PlaygroundBounds
+  - Player and Roots
+  - 
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
+  - name: 
     uniqueID: 2679593395
+    locked: 0
+  - name: 
+    uniqueID: 1095384653
     locked: 0

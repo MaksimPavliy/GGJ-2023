@@ -84,7 +84,7 @@ public abstract class Player : MonoBehaviour
             {
                 if (activeCharacter.requiredRootType == pickedRoot.rootType || pickedRoot.rootType == Root.RootType.Buryak)
                 {
-                    pickedRoot.JumpToPot(pot.RootTargetTransform.position);
+                    StartCoroutine(pickedRoot.JumpToPot(pot.RootTargetTransform.position, activeCharacter));
                     OnRootGiven?.Invoke(activeCharacter);
                     state = PlayerState.FreeMove;
                 }

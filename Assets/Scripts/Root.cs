@@ -27,6 +27,7 @@ public class Root : MonoBehaviour
     private int numOfJumps = 1;
     private bool hasGrown = false;
     private Coroutine rotCoroutine;
+    private Vector3 pickedRootOffset;
 
     private void Start()
     {
@@ -36,31 +37,28 @@ public class Root : MonoBehaviour
         }
     }
 
-    //root still rot after pickup?
-    //obstacles can fully restric access
-
     private IEnumerator Grow()
     {
-        //add scale bounce on grow
         transform.DOScale(growScale, growDuration)
-            .OnComplete(() => transform.DOScale(growScale + new Vector3(0.1f, 0.1f, 0.1f), 0.15f).SetLoops(2, LoopType.Yoyo))
-            .OnComplete(() => hasGrown = true);       
+            .OnComplete(() => transform.DOScale(growScale + new Vector3(0.075f, 0.075f, 0.075f), 0.175f).SetLoops(2, LoopType.Yoyo));
 
-        rotCoroutine = StartCoroutine(Rot());
-        yield return null;
+        yield return new WaitForSeconds(growDuration);
+
+        hasGrown = true;
+        rotCoroutine = StartCoroutine(Rot(rotDuration));
     }
 
-    private IEnumerator Rot()
+    private IEnumerator Rot(float duration)
     {
-        yield return new WaitForSeconds(rotDuration);
+        yield return new WaitForSeconds(duration);
         float alpha = 1;
-        float startingRoat = rotDuration;
+        float startingRoat = duration;
 
         while (alpha > 0)
         {
             ChangeRendererAlpha(alpha);
             startingRoat -= Time.deltaTime;
-            alpha = startingRoat / rotDuration;
+            alpha = startingRoat / duration;
             yield return new WaitForEndOfFrame();
         }
         Destroy(gameObject);
@@ -71,13 +69,23 @@ public class Root : MonoBehaviour
         transform.SetParent(player.transform, true);
         StopCoroutine(rotCoroutine);
         ChangeRendererAlpha(1);
-        rotCoroutine = StartCoroutine(Rot());
-        transform.DOJump(player.rootPickupAnchor.position, jumpPower, numOfJumps, jumpDuration).OnComplete(() => player.SetState(Player.PlayerState.Carrying));
+        rotCoroutine = StartCoroutine(Rot(rotDuration / 3));
+        var pickupRotation = player.transform.rotation == Quaternion.Euler(0, 0, 0) ? new Vector3(0, 0, 90) : new Vector3(0, 0, -90);
+        SetRenderersOrder(4);
+        transform.DOJump(player.rootPickupAnchor.position, jumpPower, numOfJumps, jumpDuration)
+            .Join(transform.DORotate(pickupRotation, jumpDuration))
+            .OnComplete(() => player.SetState(Player.PlayerState.Carrying));
     }
 
-    public void JumpToPot(Vector3 targetPos)
+    public IEnumerator JumpToPot(Vector3 targetPos, Character character)
     {
         StopCoroutine(rotCoroutine);
+        ChangeRendererAlpha(0);
+        transform.SetParent(character.transform, true);
+        transform.position = character.transform.position;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        yield return new WaitForSeconds(1);
+        ChangeRendererAlpha(1);
         transform.DOJump(targetPos, jumpPower, numOfJumps, jumpDuration).OnComplete(() => AddRootToPot());
     }
 
@@ -91,6 +99,14 @@ public class Root : MonoBehaviour
         for (int i = 0; i < renderers.Count; i++)
         {
             renderers[i].color = new Color(renderers[i].color.r, renderers[i].color.g, renderers[i].color.b, value);
+        }
+    }
+
+    private void SetRenderersOrder(int order)
+    {
+        for (int i = 0; i < renderers.Count; i++)
+        {
+            renderers[i].sortingOrder = order;
         }
     }
 

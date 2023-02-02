@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 239950781927964647}
   - component: {fileID: 239950781927964640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PotatoBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 239950782096288323}
   - component: {fileID: 1083640873}
   - component: {fileID: 1083640874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Potato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,16 +131,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abd960a01e1109499c51ed7b837f21f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnChance: 15
-  maxSpawnChance: 25
-  jumpPower: 1
+  minSpawnChance: 13
+  maxSpawnChance: 23
+  jumpPower: 1.5
   jumpDuration: 0.5
   rotDuration: 5
   renderers:
   - {fileID: 239950782367307499}
   - {fileID: 239950781927964640}
   spawnOffset: {x: 0, y: -0.05, z: 0}
-  growScale: {x: 0.25, y: 0.25, z: 0.25}
+  growScale: {x: 0.3, y: 0.3, z: 0.3}
   growDuration: 3
   chance: 10
   rootType: 1
@@ -207,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 239950782367307498}
   - component: {fileID: 239950782367307499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PotatoTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8ad41fc2e0364de49af711dee4b23208, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

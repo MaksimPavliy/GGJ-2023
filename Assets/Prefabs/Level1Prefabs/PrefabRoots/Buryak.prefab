@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2542445948324475458}
   - component: {fileID: 2542445948324475459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BuryakBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2542445948490907106}
   - component: {fileID: 2542445948490907107}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BuryakTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 52b1e03b3af9429498ef5403e23c2588, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 2542445948514959273}
   - component: {fileID: 1173485035}
   - component: {fileID: 1173485038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Buryak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,17 +216,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpawnChance: 10
-  maxSpawnChance: 15
-  jumpPower: 1
+  maxSpawnChance: 13
+  jumpPower: 1.5
   jumpDuration: 0.5
   rotDuration: 5
   renderers:
   - {fileID: 2542445948490907107}
   - {fileID: 2542445948324475459}
   spawnOffset: {x: 0, y: -0.05, z: 0}
-  growScale: {x: 0.25, y: 0.25, z: 0.25}
+  growScale: {x: 0.3, y: 0.3, z: 0.3}
   growDuration: 3
-  chance: 5
+  chance: 3
   rootType: 2
   carryOffset: 0.5
 --- !u!212 &1173485038
