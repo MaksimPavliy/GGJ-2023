@@ -42,11 +42,11 @@ public abstract class Player : MonoBehaviour
     {
         if (state != PlayerState.Digging)
         {
-            if (rb.velocity.x < 0)
+            if (moveInput.x < 0)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            if (rb.velocity.x > 0)
+            if (moveInput.x > 0)
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
@@ -84,8 +84,8 @@ public abstract class Player : MonoBehaviour
             {
                 if (activeCharacter.requiredRootType == pickedRoot.rootType || pickedRoot.rootType == Root.RootType.Buryak)
                 {
-                    OnRootGiven?.Invoke(activeCharacter);
                     pickedRoot.JumpToPot(pot.RootTargetTransform.position);
+                    OnRootGiven?.Invoke(activeCharacter);
                     state = PlayerState.FreeMove;
                 }
             }

@@ -54,7 +54,7 @@ public class Garden : MonoBehaviour
     {
         Root root;
 
-        while (GameManager.instance.isPlaying)
+        while (GameManager.instance.levelTimer > 0)
         {
             yield return new WaitForSeconds(spawnDelay);
 

@@ -16,10 +16,12 @@ public class Character : MonoBehaviour
     [HideInInspector] public Root.RootType requiredRootType;
 
     private Coroutine getRootCoroutine;
+    private Coroutine timerFillCoroutine;
 
     void Start()
     {
         Player.OnRootGiven += OnRootAquired;
+        /*GameManager.OnTimerRunOut += */
         getRootCoroutine = StartCoroutine(AskForRoot());
     }
 
@@ -27,11 +29,30 @@ public class Character : MonoBehaviour
     {
         while (GameManager.instance.levelTimer > 0)
         {
+            if (timerFillCoroutine != null)
+            {
+                StopCoroutine(timerFillCoroutine);
+            }
+            timerFillCoroutine = StartCoroutine(FillTimerImage());
             Root root = Root.SpawnRootWithChance(roots);
             requiredRootType = root.rootType;
             wantedRoot.sprite = root.GetComponent<SpriteRenderer>().sprite;
-
+           
             yield return new WaitForSeconds(timer);
+        }
+        mainCanvas.gameObject.SetActive(false);
+    }
+
+    private IEnumerator FillTimerImage()
+    {
+        timerImage.fillAmount = 0;
+        float normalizedFillTimer = 0;
+
+        while (normalizedFillTimer <= 1f)
+        {           
+            timerImage.fillAmount = normalizedFillTimer;
+            normalizedFillTimer += Time.deltaTime / timer;
+            yield return null;
         }
     }
 

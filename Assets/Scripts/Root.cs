@@ -43,11 +43,11 @@ public class Root : MonoBehaviour
     {
         //add scale bounce on grow
         transform.DOScale(growScale, growDuration)
-            .OnComplete(() => transform.DOScale(growScale + new Vector3(0.1f, 0.1f, 0.1f), 0.15f).SetLoops(2, LoopType.Yoyo));
-        yield return new WaitForSeconds(growDuration);
-        hasGrown = true;
+            .OnComplete(() => transform.DOScale(growScale + new Vector3(0.1f, 0.1f, 0.1f), 0.15f).SetLoops(2, LoopType.Yoyo))
+            .OnComplete(() => hasGrown = true);       
 
         rotCoroutine = StartCoroutine(Rot());
+        yield return null;
     }
 
     private IEnumerator Rot()
@@ -68,10 +68,10 @@ public class Root : MonoBehaviour
 
     public void JumpToPlayer(Player player)
     {
+        transform.SetParent(player.transform, true);
         StopCoroutine(rotCoroutine);
         ChangeRendererAlpha(1);
         rotCoroutine = StartCoroutine(Rot());
-        transform.SetParent(player.transform, true);
         transform.DOJump(player.rootPickupAnchor.position, jumpPower, numOfJumps, jumpDuration).OnComplete(() => player.SetState(Player.PlayerState.Carrying));
     }
 

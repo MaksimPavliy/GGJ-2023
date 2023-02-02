@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,10 +12,10 @@ public class GameManager : MonoBehaviour
     public NetworkMode networkMode = NetworkMode.Local;
     public float levelTimer;
 
+    public static UnityAction OnTimerRunOut;
+
     private void Awake()
     {
-        isPlaying = true;
-
         StartCoroutine(DecreaseLeveTimer());
 
         if (instance == null)
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
             levelTimer -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        /*OnTimerRunOut?.Invoke();*/
     }
 
     private void SetGameMode(GameMode gameMode)

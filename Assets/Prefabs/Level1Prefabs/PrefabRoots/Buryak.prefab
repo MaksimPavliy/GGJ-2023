@@ -217,9 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpawnChance: 10
   maxSpawnChance: 15
-  bottomPrefab: {fileID: 2542445948324475458}
-  jumpPower: 1.25
-  jumpDuration: 0.7
+  jumpPower: 1
+  jumpDuration: 0.5
   rotDuration: 5
   renderers:
   - {fileID: 2542445948490907107}
