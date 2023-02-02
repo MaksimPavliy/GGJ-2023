@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - ridge
+  - player
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+<<<<<<< HEAD
+  - Player
+  - PlaygroundBounds
+=======
+  - Player and Roots
+  - 
+>>>>>>> a73fe67ea48d107f44d5f9c894529621a4d56c0a
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+<<<<<<< HEAD
+  - name: Player
+    uniqueID: 2679593395
+    locked: 0
+=======
+  - name: 
+    uniqueID: 2679593395
+    locked: 0
+  - name: 
+    uniqueID: 1095384653
+    locked: 0
+>>>>>>> a73fe67ea48d107f44d5f9c894529621a4d56c0a

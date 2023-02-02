@@ -2304,7 +2304,7 @@ MonoBehaviour:
   - {fileID: 6359733012414056463}
   roots:
   - {fileID: 1996481583, guid: f52f83d3dd5f83041a94cf96d3ab06c5, type: 3}
-  - {fileID: 1173485035, guid: ccb4ee7c1c137f34a83d0f980c6cbbb4, type: 3}
+  - {fileID: 1173485035, guid: 255e7d4eeab37a0469a6840eb691f77b, type: 3}
   - {fileID: 1083640873, guid: 949a0eddc5423cb408710837802235ec, type: 3}
   rootsParent: {fileID: 7575851432580339803}
   obstaclesSpawnAmount: 1
@@ -4363,7 +4363,7 @@ MonoBehaviour:
   - {fileID: 6359733013237466248}
   roots:
   - {fileID: 1996481583, guid: f52f83d3dd5f83041a94cf96d3ab06c5, type: 3}
-  - {fileID: 1173485035, guid: ccb4ee7c1c137f34a83d0f980c6cbbb4, type: 3}
+  - {fileID: 1173485035, guid: 255e7d4eeab37a0469a6840eb691f77b, type: 3}
   - {fileID: 1083640873, guid: 949a0eddc5423cb408710837802235ec, type: 3}
   rootsParent: {fileID: 7575851432580339803}
   obstaclesSpawnAmount: 1
@@ -5501,7 +5501,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roots:
   - {fileID: 1996481583, guid: f52f83d3dd5f83041a94cf96d3ab06c5, type: 3}
-  - {fileID: 1173485035, guid: ccb4ee7c1c137f34a83d0f980c6cbbb4, type: 3}
   - {fileID: 1083640873, guid: 949a0eddc5423cb408710837802235ec, type: 3}
   wantedRoot: {fileID: 7787557137843971606}
   timerImage: {fileID: 7787557138177574633}
@@ -5815,7 +5814,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roots:
   - {fileID: 1996481583, guid: f52f83d3dd5f83041a94cf96d3ab06c5, type: 3}
-  - {fileID: 1173485035, guid: ccb4ee7c1c137f34a83d0f980c6cbbb4, type: 3}
   - {fileID: 1083640873, guid: 949a0eddc5423cb408710837802235ec, type: 3}
   wantedRoot: {fileID: 7787557138139038242}
   timerImage: {fileID: 7787557137937031901}
@@ -6347,7 +6345,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8502215206723249101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71f857e168e48947949050e316d9a33, type: 3}
+  m_Script: {fileID: 11500000, guid: 63d04ea11922dbe45a2130d64a14ad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9205927741385872476
@@ -6418,6 +6416,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9205927741385872476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71f857e168e48947949050e316d9a33, type: 3}
+  m_Script: {fileID: 11500000, guid: 63d04ea11922dbe45a2130d64a14ad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
