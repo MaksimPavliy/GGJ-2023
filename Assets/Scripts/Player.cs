@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerInput), typeof(Animator), typeof(Rigidbody2D))]
 public abstract class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float minDistanceToDig;
-    [SerializeField] private float minDistanceToPot;
+    [SerializeField] private float minDistanceToCharacter;
     [SerializeField] private Pot pot;
+    [SerializeField] private List<Character> characters;
+
+    public Transform rootPickupAnchor;
+    public static UnityAction<Character> OnRootGiven;
 
     protected Vector2 moveInput;
     protected Root pickedRoot;
@@ -21,8 +26,9 @@ public abstract class Player : MonoBehaviour
     protected PlayerState state = PlayerState.FreeMove;
     protected Animator animator;
 
-    private Ridge closestRidge;
+    [HideInInspector] public Ridge closestRidge;
     private Rigidbody2D rb;
+    private Character activeCharacter;
 
     private void Awake()
     {
@@ -36,9 +42,17 @@ public abstract class Player : MonoBehaviour
     {
         if (state != PlayerState.Digging)
         {
-            rb.MovePosition(rb.position + moveInput * speed * Time.deltaTime);
+            if (moveInput.x < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            if (moveInput.x > 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            rb.velocity = new Vector2(moveInput.x, moveInput.y) * speed;
         }
-    } 
+    }
 
     public void OnPlayerMove() => moveInput = move.ReadValue<Vector2>();
 
@@ -66,12 +80,38 @@ public abstract class Player : MonoBehaviour
         }
         if (state == PlayerState.Carrying)
         {
-            if(Vector2.Distance(transform.position, pot.transform.position) <= minDistanceToPot && pot.rootInRecipe(pickedRoot.rootType))
+            if (IsCharacterClose())
             {
-                state = PlayerState.FreeMove;
-                pickedRoot.JumpToPot(pot.RootTargetTransform.position);
+                if (activeCharacter.requiredRootType == pickedRoot.rootType || pickedRoot.rootType == Root.RootType.Buryak)
+                {
+                    pickedRoot.JumpToPot(pot.RootTargetTransform.position);
+                    OnRootGiven?.Invoke(activeCharacter);
+                    state = PlayerState.FreeMove;
+                }
             }
         }
+    }
+
+    private Character IsCharacterClose()
+    {
+        if (GameManager.instance.gameMode == GameManager.GameMode.StoryMode)
+        {
+            foreach (var character in characters)
+            {
+                if (Vector2.Distance(transform.position, character.transform.position) <= minDistanceToCharacter)
+                {
+                    return activeCharacter = character;
+                }
+            }
+        }
+        else
+        {
+            if (Vector2.Distance(transform.position, characters[0].transform.position) <= minDistanceToCharacter)
+            {
+                return activeCharacter = characters[0];
+            }
+        }
+        return null;
     }
 
     public void FinishDigging()
@@ -82,14 +122,6 @@ public abstract class Player : MonoBehaviour
     public void SetState(PlayerState state)
     {
         this.state = state;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "ridge")
-        {
-            closestRidge = other.gameObject.GetComponent<Ridge>();
-        }
     }
 
     public enum PlayerState

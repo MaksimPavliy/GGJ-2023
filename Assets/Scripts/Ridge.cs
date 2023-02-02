@@ -9,6 +9,7 @@ public class Ridge : MonoBehaviour
     [HideInInspector] public BoxCollider2D bc;
 
     public Root root { get; set; }
+    public bool canHaveObstacle;
 
     private void Awake()
     {
@@ -17,7 +18,7 @@ public class Ridge : MonoBehaviour
 
     private void Start()
     {
-        Root.OnRootRotten += IsEmpty;
+        Root.OnRootRotten += ToggleIsEmpty;
     }
 
     public bool CanBeDigged()
@@ -29,7 +30,7 @@ public class Ridge : MonoBehaviour
         return false;
     }
 
-    private void IsEmpty(Root root)
+    private void ToggleIsEmpty(Root root)
     {
         if (this.root == root)
         {

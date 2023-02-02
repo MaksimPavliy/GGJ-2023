@@ -5,17 +5,17 @@ using UnityEngine.InputSystem;
 
 public class Rabbit : Player
 {
-    void Start()
+    private void Start()
     {
-        if (GameManager.instance.isLocalGame)
+        if (GameManager.instance.networkMode == GameManager.NetworkMode.Local)
         {
-            move = playerInput.actions["MoveLocal"];
-            interact = playerInput.actions["InteractLocal"];
+            move = playerInput.actions["MoveSecondPlayer"];
+            interact = playerInput.actions["InteractSecondPlayer"];
         }
-        else
+        else if (GameManager.instance.networkMode == GameManager.NetworkMode.Multiplayer)
         {
-            move = playerInput.actions["MoveMultiplayer"];
-            interact = playerInput.actions["InteractMultiplayer"];
+            move = playerInput.actions["MoveFirstPlayer"];
+            interact = playerInput.actions["InteractFirstPlayer"];
         }
     }
 
