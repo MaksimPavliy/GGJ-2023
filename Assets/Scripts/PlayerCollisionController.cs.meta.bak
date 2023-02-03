@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/MainMenu.cs.meta
-guid: 63d04ea11922dbe45a2130d64a14ad7f
-========
 guid: e71f857e168e48947949050e316d9a33
->>>>>>>> a73fe67ea48d107f44d5f9c894529621a4d56c0a:Assets/Scripts/PlayerCollisionController.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
