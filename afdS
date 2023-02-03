@@ -1,0 +1,145 @@
+[33mcommit 4b2f76347142cbcdb5db49177a506d7f11dacf8f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Fri Feb 3 14:21:45 2023 +0200
+
+    dayFlow + animations
+
+[33mcommit a73fe67ea48d107f44d5f9c894529621a4d56c0a[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Thu Feb 2 16:21:48 2023 +0200
+
+    root behaviour fixes
+
+[33mcommit 8cc95b8196d41806f96c56b127549d485661428f[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Thu Feb 2 12:57:58 2023 +0200
+
+    almost prototype
+
+[33mcommit ea77701362f8a7100d6f115addd555693dfaa023[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Thu Feb 2 01:18:21 2023 +0200
+
+    gameplay fixes
+
+[33mcommit 4d15e6d6e6346abf9748bd7f9f4cbd559f39c020[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Wed Feb 1 21:18:57 2023 +0200
+
+    Level1
+
+[33mcommit 1e75196200259e1a297851e960dc275dee335403[m
+Merge: 35d457d 72660e0
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Wed Feb 1 21:07:55 2023 +0200
+
+    mainScene
+
+[33mcommit 35d457d8aa9fb8138652268edadb1e1edcaebe5a[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Wed Feb 1 20:28:04 2023 +0200
+
+    reset
+
+[33mcommit 72660e020d21cc6dab2ea7c9c9ebbe8366992469[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Wed Feb 1 20:23:13 2023 +0200
+
+    character wantsRoot
+
+[33mcommit 284e7a9ee8100be0833228c42cecc00f57f11b06[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Wed Feb 1 18:01:51 2023 +0200
+
+    roots spawn Offset
+
+[33mcommit f5f08a7dd7cf0587fc09e975cb6b235e4d50e14d[m
+Author: kardxd <arturkardasevich123@gmail.com>
+Date:   Wed Feb 1 16:41:39 2023 +0200
+
+    playground
+
+[33mcommit 54ac2f6649e80177d36a6a6c908017e45977b323[m
+Merge: 2c7b61b 35ace08
+Author: kardxd <arturkardasevich123@gmail.com>
+Date:   Wed Feb 1 16:39:23 2023 +0200
+
+    Merge branch 'master' of https://github.com/MaksymPavlii/GGJ-2023
+
+[33mcommit 2c7b61b921c2e2158acf974b19c61f7bb55d4853[m
+Author: kardxd <arturkardasevich123@gmail.com>
+Date:   Wed Feb 1 16:39:19 2023 +0200
+
+    playground
+
+[33mcommit 35ace0828fb5f52fb47cdf518e57f1f40875c630[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Wed Feb 1 16:28:11 2023 +0200
+
+    test
+
+[33mcommit 364cab7c1f54e60114d2f6307122115ec1e8bc6f[m
+Author: kardxd <arturkardasevich123@gmail.com>
+Date:   Wed Feb 1 16:24:12 2023 +0200
+
+    playground
+
+[33mcommit e44c0a36acf39c64392c50f3e8c34a4582f86020[m
+Author: kardxd <arturkardasevich123@gmail.com>
+Date:   Wed Feb 1 16:10:05 2023 +0200
+
+    playground
+
+[33mcommit 9b91b2dc21ad727a0922f3796c4091f375e4c2c6[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Wed Feb 1 15:16:54 2023 +0200
+
+    transparency
+
+[33mcommit 7c7596e9150977db97689da0186f49f6460fde9e[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Wed Feb 1 14:26:06 2023 +0200
+
+    flickering test
+
+[33mcommit bea1f0d44cae8832b80f430dfe9ec968ba0c7671[m
+Author: Maksym Pavlii <maksim.pavliy1@gmail.com>
+Date:   Wed Feb 1 09:06:56 2023 +0200
+
+    first gameplay
+
+[33mcommit f2c7351e62c5a4a5f35765c20495f2d40cad606e[m
+Author: Maksym Pavlii <maksim.pavliy1@gmail.com>
+Date:   Wed Feb 1 00:37:20 2023 +0200
+
+    few state fixes
+
+[33mcommit 630a92234cb35528ad52b466acc17dd5d1bfeb2e[m
+Author: Maksym Pavlii <maksim.pavliy1@gmail.com>
+Date:   Tue Jan 31 23:54:37 2023 +0200
+
+    root Jump animation
+
+[33mcommit 90c08fa74c7fffe18a2efacbe4d6579166ae7f9f[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Tue Jan 31 21:53:33 2023 +0200
+
+    scene prefab
+
+[33mcommit 5ffd9fcf68915230d85c7c92925f5e29b33a2bb3[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Tue Jan 31 18:58:58 2023 +0200
+
+    Movement and Spawn
+
+[33mcommit 4ec3f931f540368c329384ddbf00c54d5c26791c[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Mon Jan 30 19:44:45 2023 +0200
+
+    first commit
+
+[33mcommit 437c3a1fefe19d0a12b2a6c24be559b197a38133[m
+Author: maksym_pavlii <maksim.pavliy1@gmail.com>
+Date:   Mon Jan 30 19:40:43 2023 +0200
+
+    gitignore
