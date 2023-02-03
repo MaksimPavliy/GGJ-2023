@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 using UnityEngine.Events;
+using Spine.Unity;
 
-[RequireComponent(typeof(PlayerInput), typeof(Animator), typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerInput), typeof(Rigidbody2D))]
 public abstract class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
@@ -23,24 +24,43 @@ public abstract class Player : MonoBehaviour
     protected InputAction move;
     protected InputAction interact;
 
-    protected PlayerState state = PlayerState.FreeMove;
-    protected Animator animator;
+    protected PlayerState state = PlayerState.Idle;
 
     [HideInInspector] public Ridge closestRidge;
     private Rigidbody2D rb;
     private Character activeCharacter;
 
+    private SkeletonAnimation skeletonAnimation;
+    private Spine.AnimationState skeletonAnimationState;
+    [SerializeField] private AnimationReferenceAsset idle, walk, dig, attack;
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
-        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
+        skeletonAnimation = GetComponent<SkeletonAnimation>();
+        skeletonAnimationState = skeletonAnimation.AnimationState;
+    }
+
+    private void Update()
+    {
+        if (state != PlayerState.Digging)
+        {
+            if (skeletonAnimation.AnimationName != walk.name && rb.velocity != Vector2.zero)
+            {
+                skeletonAnimationState.SetAnimation(0, walk, true);
+            }
+            else if (skeletonAnimation.AnimationName != idle.name && rb.velocity == Vector2.zero)
+            {
+                skeletonAnimationState.SetAnimation(0, idle, true);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        if (state != PlayerState.Digging)
+        if (state != PlayerState.Digging && GameManager.instance.levelTimer > 0)
         {
             if (moveInput.x < 0)
             {
@@ -60,33 +80,31 @@ public abstract class Player : MonoBehaviour
 
     protected virtual void Interract(InputAction.CallbackContext ctx)
     {
-        if (!pickedRoot)
+        if (state == PlayerState.Moving || state == PlayerState.Idle)
         {
-            state = PlayerState.FreeMove;
-        }
-        if (state == PlayerState.FreeMove)
-        {
-            if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
+            if (!pickedRoot)
             {
-                state = PlayerState.Digging;
-                rb.velocity = Vector2.zero;
-                //animator.Play("Dig");
-                pickedRoot = closestRidge.root;
-                closestRidge.root = null;
-                closestRidge.isEmpty = true;
-
-                FinishDigging();
-            }
-        }
-        if (state == PlayerState.Carrying)
-        {
-            if (IsCharacterClose())
-            {
-                if (activeCharacter.requiredRootType == pickedRoot.rootType || pickedRoot.rootType == Root.RootType.Buryak)
+                if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
                 {
-                    StartCoroutine(pickedRoot.JumpToPot(pot.RootTargetTransform.position, activeCharacter));
-                    OnRootGiven?.Invoke(activeCharacter);
-                    state = PlayerState.FreeMove;
+                    state = PlayerState.Digging;
+                    pickedRoot = closestRidge.root;
+                    skeletonAnimationState.SetAnimation(0, dig, false);
+                    closestRidge.root = null;
+                    closestRidge.isEmpty = true;
+                    rb.velocity = Vector2.zero;
+                    FinishDigging();
+                }
+            }
+            if (state != PlayerState.Digging && pickedRoot)
+            {
+                if (IsCharacterClose())
+                {
+                    if (activeCharacter.requiredRootType == pickedRoot.rootType || pickedRoot.rootType == Root.RootType.Buryak)
+                    {
+                        StartCoroutine(pickedRoot.JumpToPot(pot.RootTargetTransform.position, activeCharacter));
+                        pickedRoot = null;
+                        OnRootGiven?.Invoke(activeCharacter);
+                    }
                 }
             }
         }
@@ -116,7 +134,7 @@ public abstract class Player : MonoBehaviour
 
     public void FinishDigging()
     {
-        pickedRoot.JumpToPlayer(this);
+        StartCoroutine(pickedRoot.JumpToPlayer(this, dig.Animation.Duration));
     }
 
     public void SetState(PlayerState state)
@@ -126,8 +144,9 @@ public abstract class Player : MonoBehaviour
 
     public enum PlayerState
     {
-        FreeMove,
-        Carrying,
-        Digging
+        Idle,
+        Moving,
+        Digging,
+        Attacking
     }
 }

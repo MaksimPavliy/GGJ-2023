@@ -71,7 +71,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -356,8 +356,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373835370547454065}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.46, y: 2.32, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.34, y: 3.4, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -431,9 +431,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roots:
   - {fileID: 1996481583, guid: f52f83d3dd5f83041a94cf96d3ab06c5, type: 3}
-  - {fileID: 1173485035, guid: ccb4ee7c1c137f34a83d0f980c6cbbb4, type: 3}
   - {fileID: 1083640873, guid: 949a0eddc5423cb408710837802235ec, type: 3}
   wantedRoot: {fileID: 373835368991130959}
   timerImage: {fileID: 373835368789648816}
   timer: 7
-  requiredRoot: {fileID: 0}
+  leftCharacter: 1
+  mainCanvas: {fileID: 373835370275800677}
+  requiredRootType: 0

@@ -58,7 +58,7 @@ public class Character : MonoBehaviour
 
     private void OnRootAquired(Character character)
     {
-        if (this.leftCharacter == character.leftCharacter)
+        if (leftCharacter == character.leftCharacter)
         {
             mainCanvas.transform.DOScale(1.1f, 0.2f).SetLoops(2, LoopType.Yoyo);
             StopCoroutine(getRootCoroutine);

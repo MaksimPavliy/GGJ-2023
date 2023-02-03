@@ -6,9 +6,10 @@ public class Garden : MonoBehaviour
 {
     [SerializeField] private List<Ridge> ridges;
     [SerializeField] private List<Root> roots;
-    [SerializeField] private Transform rootsParent;
+    [SerializeField] private Transform rootParent;
     [SerializeField] private int obstaclesSpawnAmount;
-    [SerializeField] private Root rootObstacle;
+    [SerializeField] private List<Obstacle> obstacles;
+    [SerializeField] private Transform obstacleParent;
     [SerializeField] private float spawnDelay = 2f;
 
     private Ridge randomEmptyRidge;
@@ -16,25 +17,28 @@ public class Garden : MonoBehaviour
 
     void Start()
     {
-        SpawnRootObstaclesOnStart(obstaclesSpawnAmount);
+        SpawnObstaclesOnStart();
         StartCoroutine(SpawnRoots());
     }
 
-    private void SpawnRootObstaclesOnStart(int amount)
+    private void SpawnObstaclesOnStart()
     {
-        for (int i = 0; i < amount; i++)
+        foreach (var obstacle in obstacles)
         {
-            FindRandomEmptyRidge();
-            if (!randomEmptyRidge.canHaveObstacle)
+            for (int i = 0; i < obstacle.spawnAmount; i++)
             {
-                i--;
-                continue;
+                FindRandomEmptyRidge();
+                if (!randomEmptyRidge.canHaveObstacle)
+                {
+                    i--;
+                    continue;
+                }
+                randomEmptyRidge.isEmpty = false;
+
+                randomEmptyRidge.root = null;
+                randomEmptyRidge.bc.isTrigger = false;
+                Instantiate(obstacle, randomEmptyRidge.transform.position, obstacle.transform.rotation, obstacleParent);
             }
-            randomEmptyRidge.isEmpty = false;
-            
-            randomEmptyRidge.root = null;
-            randomEmptyRidge.bc.isTrigger = false;
-            Instantiate(rootObstacle, randomEmptyRidge.transform.position + rootObstacle.spawnOffset, rootObstacle.transform.rotation, rootsParent);
         }
     }
 
@@ -63,7 +67,7 @@ public class Garden : MonoBehaviour
             {
                 root = Root.SpawnRootWithChance(roots);
                 randomEmptyRidge.isEmpty = false;
-                randomEmptyRidge.root = Instantiate(root, randomEmptyRidge.transform.position + root.spawnOffset, root.transform.rotation, rootsParent);
+                randomEmptyRidge.root = Instantiate(root, randomEmptyRidge.transform.position + root.spawnOffset, root.transform.rotation, rootParent);
             }
         }
     }

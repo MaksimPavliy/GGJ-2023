@@ -31,18 +31,22 @@ public class Root : MonoBehaviour
 
     private void Start()
     {
-        if (rootType != RootType.ObstacleRoot)
-        {
-            StartCoroutine(Grow());
-        }
+        ChangeRendererAlpha(0);
+        StartCoroutine(Grow());
     }
 
     private IEnumerator Grow()
     {
-        transform.DOScale(growScale, growDuration)
-            .OnComplete(() => transform.DOScale(growScale + new Vector3(0.075f, 0.075f, 0.075f), 0.175f).SetLoops(2, LoopType.Yoyo));
+        yield return new WaitForSeconds(growDuration - 0.5f);
+        ChangeRendererAlpha(1);
 
-        yield return new WaitForSeconds(growDuration);
+        Sequence scaleSequence = DOTween.Sequence();
+
+        scaleSequence.Append(transform.DOScale(growScale, 0.25f));
+        scaleSequence.Append(transform.DOScale(growScale + new Vector3(0.05f, 0.05f, 0.05f), 0.125f));
+        scaleSequence.Append(transform.DOScale(growScale - new Vector3(0.025f, 0.025f, 0.025f), 0.0625f));
+        scaleSequence.Append(transform.DOScale(growScale, 0.0625f));
+        scaleSequence.Play();
 
         hasGrown = true;
         rotCoroutine = StartCoroutine(Rot(rotDuration));
@@ -64,17 +68,18 @@ public class Root : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void JumpToPlayer(Player player)
+    public IEnumerator JumpToPlayer(Player player, float digDuration)
     {
-        transform.SetParent(player.transform, true);
         StopCoroutine(rotCoroutine);
+        yield return new WaitForSeconds(digDuration);
+        transform.SetParent(player.transform, true);
         ChangeRendererAlpha(1);
-        rotCoroutine = StartCoroutine(Rot(rotDuration / 3));
+        rotCoroutine = StartCoroutine(Rot(rotDuration / 2));
         var pickupRotation = player.transform.rotation == Quaternion.Euler(0, 0, 0) ? new Vector3(0, 0, 90) : new Vector3(0, 0, -90);
         SetRenderersOrder(4);
         transform.DOJump(player.rootPickupAnchor.position, jumpPower, numOfJumps, jumpDuration)
             .Join(transform.DORotate(pickupRotation, jumpDuration))
-            .OnComplete(() => player.SetState(Player.PlayerState.Carrying));
+            .OnComplete(() => player.SetState(Player.PlayerState.Moving));
     }
 
     public IEnumerator JumpToPot(Vector3 targetPos, Character character)
@@ -146,7 +151,6 @@ public class Root : MonoBehaviour
     {
         Carrot,
         Potato,
-        Buryak,
-        ObstacleRoot
+        Buryak
     }
 }

@@ -1,0 +1,146 @@
+
+Cat_spine.png
+size: 404,528
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 4, 116
+  size: 246, 140
+  orig: 246, 140
+  offset: 0, 0
+  index: -1
+Ear1
+  rotate: false
+  xy: 339, 20
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Ear2
+  rotate: false
+  xy: 365, 195
+  size: 34, 67
+  orig: 34, 67
+  offset: 0, 0
+  index: -1
+Eyes
+  rotate: false
+  xy: 166, 262
+  size: 78, 35
+  orig: 78, 35
+  offset: 0, 0
+  index: -1
+Eyes_closed
+  rotate: true
+  xy: 301, 86
+  size: 87, 28
+  orig: 87, 28
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 248, 266
+  size: 134, 101
+  orig: 134, 101
+  offset: 0, 0
+  index: -1
+Leg_back1
+  rotate: true
+  xy: 4, 4
+  size: 43, 68
+  orig: 43, 68
+  offset: 0, 0
+  index: -1
+Leg_back2
+  rotate: false
+  xy: 354, 450
+  size: 43, 73
+  orig: 43, 73
+  offset: 0, 0
+  index: -1
+Leg_front1
+  rotate: true
+  xy: 76, 5
+  size: 42, 67
+  orig: 42, 67
+  offset: 0, 0
+  index: -1
+Leg_front2
+  rotate: false
+  xy: 354, 373
+  size: 42, 73
+  orig: 42, 73
+  offset: 0, 0
+  index: -1
+Stroke_Ear1
+  rotate: true
+  xy: 253, 4
+  size: 50, 82
+  orig: 50, 82
+  offset: 0, 0
+  index: -1
+Stroke_Ear2
+  rotate: false
+  xy: 333, 88
+  size: 52, 85
+  orig: 52, 85
+  offset: 0, 0
+  index: -1
+Stroke_Leg_back1
+  rotate: true
+  xy: 99, 51
+  size: 61, 86
+  orig: 61, 86
+  offset: 0, 0
+  index: -1
+Stroke_Leg_back2
+  rotate: true
+  xy: 4, 51
+  size: 61, 91
+  orig: 61, 91
+  offset: 0, 0
+  index: -1
+Stroke_Leg_front1
+  rotate: false
+  xy: 301, 177
+  size: 60, 85
+  orig: 60, 85
+  offset: 0, 0
+  index: -1
+Stroke_Leg_front2
+  rotate: false
+  xy: 189, 21
+  size: 60, 91
+  orig: 60, 91
+  offset: 0, 0
+  index: -1
+Stroke_body
+  rotate: true
+  xy: 4, 260
+  size: 263, 158
+  orig: 263, 158
+  offset: 0, 0
+  index: -1
+Stroke_head
+  rotate: true
+  xy: 231, 371
+  size: 152, 119
+  orig: 152, 119
+  offset: 0, 0
+  index: -1
+Stroke_tail
+  rotate: true
+  xy: 166, 301
+  size: 222, 61
+  orig: 222, 61
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: true
+  xy: 254, 58
+  size: 204, 43
+  orig: 204, 43
+  offset: 0, 0
+  index: -1
