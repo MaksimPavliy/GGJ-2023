@@ -21,7 +21,6 @@ public class Character : MonoBehaviour
     void Start()
     {
         Player.OnRootGiven += OnRootAquired;
-        /*GameManager.OnTimerRunOut += */
         getRootCoroutine = StartCoroutine(AskForRoot());
     }
 
@@ -40,7 +39,6 @@ public class Character : MonoBehaviour
            
             yield return new WaitForSeconds(timer);
         }
-        mainCanvas.gameObject.SetActive(false);
     }
 
     private IEnumerator FillTimerImage()

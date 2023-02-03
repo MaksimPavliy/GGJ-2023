@@ -60,7 +60,7 @@ public abstract class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (state != PlayerState.Digging && GameManager.instance.levelTimer > 0)
+        if (state != PlayerState.Digging)
         {
             if (moveInput.x < 0)
             {

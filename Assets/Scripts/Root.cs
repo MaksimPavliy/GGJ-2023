@@ -11,7 +11,8 @@ public class Root : MonoBehaviour
     [SerializeField] private float jumpPower = 1.5f;
     [SerializeField] private float jumpDuration = 1;
     [SerializeField] private float rotDuration = 5;
-    [SerializeField] private List<SpriteRenderer> renderers;
+    [SerializeField] private SpriteRenderer topRenderer;
+    [SerializeField] private SpriteRenderer bottomRenderer;
 
     public bool HasGrown => hasGrown;
     public static UnityAction<Root> OnRootAddedToPot;
@@ -27,18 +28,17 @@ public class Root : MonoBehaviour
     private int numOfJumps = 1;
     private bool hasGrown = false;
     private Coroutine rotCoroutine;
-    private Vector3 pickedRootOffset;
 
     private void Start()
     {
-        ChangeRendererAlpha(0);
+        ChangeRendererAlpha(0, true);
         StartCoroutine(Grow());
     }
 
     private IEnumerator Grow()
     {
         yield return new WaitForSeconds(growDuration - 0.5f);
-        ChangeRendererAlpha(1);
+        ChangeRendererAlpha(1, true);
 
         Sequence scaleSequence = DOTween.Sequence();
 
@@ -60,7 +60,7 @@ public class Root : MonoBehaviour
 
         while (alpha > 0)
         {
-            ChangeRendererAlpha(alpha);
+            bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, alpha);
             startingRoat -= Time.deltaTime;
             alpha = startingRoat / duration;
             yield return new WaitForEndOfFrame();
@@ -70,10 +70,15 @@ public class Root : MonoBehaviour
 
     public IEnumerator JumpToPlayer(Player player, float digDuration)
     {
+        /*if (rootType == RootType.Sornyak)
+        {
+            Destroy(gameObject);
+        }*/
         StopCoroutine(rotCoroutine);
         yield return new WaitForSeconds(digDuration);
         transform.SetParent(player.transform, true);
-        ChangeRendererAlpha(1);
+        ChangeRendererAlpha(0, false);
+        bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);
         rotCoroutine = StartCoroutine(Rot(rotDuration / 2));
         var pickupRotation = player.transform.rotation == Quaternion.Euler(0, 0, 0) ? new Vector3(0, 0, 90) : new Vector3(0, 0, -90);
         SetRenderersOrder(4);
@@ -85,12 +90,13 @@ public class Root : MonoBehaviour
     public IEnumerator JumpToPot(Vector3 targetPos, Character character)
     {
         StopCoroutine(rotCoroutine);
-        ChangeRendererAlpha(0);
+        ChangeRendererAlpha(0, true);
         transform.SetParent(character.transform, true);
         transform.position = character.transform.position;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         yield return new WaitForSeconds(1);
-        ChangeRendererAlpha(1);
+        ChangeRendererAlpha(1, true);
+        ChangeRendererAlpha(0, false);
         transform.DOJump(targetPos, jumpPower, numOfJumps, jumpDuration).OnComplete(() => AddRootToPot());
     }
 
@@ -99,20 +105,24 @@ public class Root : MonoBehaviour
         OnRootAddedToPot?.Invoke(this);
     }
 
-    private void ChangeRendererAlpha(float value)
+    private void ChangeRendererAlpha(float value, bool both)
     {
-        for (int i = 0; i < renderers.Count; i++)
+        if (both)
         {
-            renderers[i].color = new Color(renderers[i].color.r, renderers[i].color.g, renderers[i].color.b, value);
+            topRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, value);
+            bottomRenderer.color = new Color(bottomRenderer.color.r, bottomRenderer.color.g, bottomRenderer.color.b, value);
+        }
+        else
+        {
+            topRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, value);
         }
     }
 
     private void SetRenderersOrder(int order)
     {
-        for (int i = 0; i < renderers.Count; i++)
-        {
-            renderers[i].sortingOrder = order;
-        }
+
+        topRenderer.sortingOrder = order;
+        bottomRenderer.sortingOrder = order;
     }
 
     public static Root SpawnRootWithChance(List<Root> roots)
@@ -151,6 +161,7 @@ public class Root : MonoBehaviour
     {
         Carrot,
         Potato,
-        Buryak
+        Buryak,
+        Sornyak
     }
 }
