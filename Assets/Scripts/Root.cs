@@ -23,7 +23,6 @@ public class Root : MonoBehaviour
     public float growDuration;
     public int chance;
     public RootType rootType;
-    public float carryOffset = 0.5f;
 
     private int numOfJumps = 1;
     private bool hasGrown = false;
@@ -81,8 +80,7 @@ public class Root : MonoBehaviour
         {
             transform.SetParent(player.transform, true);
             ChangeRendererAlpha(0, false);
-            bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);
-            //rotCoroutine = StartCoroutine(Rot(rotDuration / 2));
+            bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);          
             var pickupRotation = player.transform.rotation == Quaternion.Euler(0, 0, 0) ? new Vector3(0, 0, 90) : new Vector3(0, 0, -90);
             transform.DOJump(player.rootPickupAnchor.position, jumpPower, numOfJumps, jumpDuration)
                 .Join(transform.DORotate(pickupRotation, jumpDuration))

@@ -227,7 +227,7 @@ MonoBehaviour:
   growDuration: 2
   chance: 3
   rootType: 3
-  carryOffset: -0.5
+  carryOffset: {x: 0, y: 0, z: 0}
 --- !u!212 &440107042141583975
 SpriteRenderer:
   m_ObjectHideFlags: 0

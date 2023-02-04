@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayStartColor: {r: 0.09803922, g: 0.49019608, b: 0.49019608, a: 1}
   dayEndColor: {r: 0.028978268, g: 0.41509432, b: 0.41509432, a: 1}
-  dayMiddleColor: {r: 0.43137255, g: 1, b: 1, a: 1}
+  dayMiddleColor: {r: 0.05882353, g: 0.627451, b: 0.627451, a: 0.627451}
   sunMidPos: {x: 4.5, y: 5.5, z: 0}
   sunEndPos: {x: 11.25, y: 1.8, z: 0}
 --- !u!212 &1682514685
@@ -5230,7 +5230,7 @@ MonoBehaviour:
   isPlaying: 0
   gameMode: 0
   networkMode: 0
-  requiredRootsAmount: 20
+  requiredRootsAmount: 4
 --- !u!1 &7575851432580339748
 GameObject:
   m_ObjectHideFlags: 0
@@ -5498,6 +5498,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4019282920948443728, guid: 48a09cd95ec5d024e8f33971f59ee8b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4019282920948443728, guid: 48a09cd95ec5d024e8f33971f59ee8b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4407255096546178048, guid: 48a09cd95ec5d024e8f33971f59ee8b6, type: 3}
       propertyPath: m_Name
       value: Rabbit
@@ -5518,6 +5526,14 @@ PrefabInstance:
       propertyPath: walk
       value: 
       objectReference: {fileID: 11400000, guid: b0252841843c77f4aa297666c5ae8c0d, type: 2}
+    - target: {fileID: 6424238136837333775, guid: 48a09cd95ec5d024e8f33971f59ee8b6, type: 3}
+      propertyPath: carryOffset.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424238136837333775, guid: 48a09cd95ec5d024e8f33971f59ee8b6, type: 3}
+      propertyPath: carryOffset.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6424238136837333775, guid: 48a09cd95ec5d024e8f33971f59ee8b6, type: 3}
       propertyPath: characters.Array.data[0]
       value: 
@@ -5713,6 +5729,18 @@ PrefabInstance:
     - target: {fileID: 6453442012253676378, guid: 0c7ef81a992ac1a4a948489c24ca1bce, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453442012253676378, guid: 0c7ef81a992ac1a4a948489c24ca1bce, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453442012253676378, guid: 0c7ef81a992ac1a4a948489c24ca1bce, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453442012253676378, guid: 0c7ef81a992ac1a4a948489c24ca1bce, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6453442012253676378, guid: 0c7ef81a992ac1a4a948489c24ca1bce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5964,6 +5992,14 @@ PrefabInstance:
     - target: {fileID: 6594981141056581216, guid: c12de40c25fcf8742ad1dbcf06bc4006, type: 3}
       propertyPath: m_Name
       value: Cat
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434127093776590405, guid: c12de40c25fcf8742ad1dbcf06bc4006, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434127093776590405, guid: c12de40c25fcf8742ad1dbcf06bc4006, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c12de40c25fcf8742ad1dbcf06bc4006, type: 3}

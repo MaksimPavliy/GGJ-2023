@@ -23,6 +23,7 @@ public class Character : MonoBehaviour
 
     void Start()
     {
+        GameManager.OnWin += OnLevelEnded;
         Player.OnRootGiven += OnRootAquired;
         getRootCoroutine = StartCoroutine(AskForRoot());
     }
@@ -89,5 +90,10 @@ public class Character : MonoBehaviour
         {
             GameManager.instance.LoseGame();
         }
+    }
+
+    private void OnLevelEnded()
+    {
+        mainCanvas.gameObject.SetActive(false);
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public float requiredRootsAmount;
     private int collectedRootsAmount;
 
-    public static UnityAction OncollectedCounterUpdated;
+    public static UnityAction OnCollectedCounterUpdated;
+    public static UnityAction OnWin;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         if (collectedRootsAmount < requiredRootsAmount)
         {
-            OncollectedCounterUpdated?.Invoke();
+            OnCollectedCounterUpdated?.Invoke();
         }
         collectedRootsAmount++;
         if (collectedRootsAmount >= requiredRootsAmount)
@@ -46,12 +47,15 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-
+        isPlaying = false;
+        OnWin?.Invoke();
+        /*Time.timeScale = 0;*/
     }
 
     public void LoseGame()
     {
-
+        isPlaying = false;
+        /*Time.timeScale = 0;*/
     }
 
     private void SetGameMode(GameMode gameMode)

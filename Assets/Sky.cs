@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +12,7 @@ public class Sky : MonoBehaviour
 
     void Start()
     {
-        GameManager.OncollectedCounterUpdated += MoveSky;
+        GameManager.OnCollectedCounterUpdated += MoveSky;
         moveValue = (transform.position.y - endPosY) / GameManager.instance.requiredRootsAmount;
         curPosition = transform.position;
     }   
