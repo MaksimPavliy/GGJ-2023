@@ -12,11 +12,14 @@ public class Character : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private bool leftCharacter;
     [SerializeField] private Canvas mainCanvas;
+    [SerializeField] List<Image> xSigns;
+    /*[SerializeField] private Color redSignColor;*/
 
     [HideInInspector] public Root.RootType requiredRootType;
 
     private Coroutine getRootCoroutine;
     private Coroutine timerFillCoroutine;
+    private int xCounter = 0;
 
     void Start()
     {
@@ -38,6 +41,9 @@ public class Character : MonoBehaviour
             wantedRoot.sprite = root.GetComponent<SpriteRenderer>().sprite;
            
             yield return new WaitForSeconds(timer);
+            xSigns[xCounter].color = Color.red; 
+            UpdateXCounter();
+            //palyBadAnimation;
         }
     }
 
@@ -56,22 +62,32 @@ public class Character : MonoBehaviour
 
     private void OnRootAquired(Character character, Root root)
     {
-        GameManager.instance.UpdateRootCounter();
-
-        if(root.rootType == requiredRootType)
-        {
-            //play good animation
-        }
-        else
-        {
-            //bd animation
-        }
-
         if (leftCharacter == character.leftCharacter)
         {
+            if (root.rootType == requiredRootType)
+            {
+                //play good animation
+            }
+            else
+            {
+                xSigns[xCounter].color = Color.red;
+                UpdateXCounter();
+                //bad animation
+            }
+            GameManager.instance.UpdateRootCounter();
             mainCanvas.transform.DOScale(1.1f, 0.2f).SetLoops(2, LoopType.Yoyo);
             StopCoroutine(getRootCoroutine);
             getRootCoroutine = StartCoroutine(AskForRoot());
+        }
+    }
+
+    private void UpdateXCounter()
+    {
+        xCounter++;
+
+        if (xCounter >= 3)
+        {
+            GameManager.instance.LoseGame();
         }
     }
 }

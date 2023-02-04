@@ -5,24 +5,24 @@ using UnityEngine;
 
 public class Sky : MonoBehaviour
 {
-    [SerializeField] private Transform endPosTransform;
+    [SerializeField] private float endPosY;
 
-    private Vector3 moveValue;
+    private float moveValue;
     private Vector3 curPosition;
 
     void Start()
     {
         GameManager.OncollectedCounterUpdated += MoveSky;
-        moveValue = (endPosTransform.position - transform.position) / GameManager.instance.requiredRootsAmount / 3;
+        moveValue = (transform.position.y - endPosY) / GameManager.instance.requiredRootsAmount;
         curPosition = transform.position;
-    }
+    }   
 
     private void MoveSky()
     {
-        if (curPosition != endPosTransform.position)
+        if (curPosition.y != endPosY)
         {
-            curPosition += moveValue;
+            curPosition.y -= moveValue;
         }
-        transform.DOMove(curPosition + moveValue, 1f).SetEase(Ease.Linear);
+        transform.DOMoveY(curPosition.y, 1f).SetEase(Ease.Linear);
     }
 }
