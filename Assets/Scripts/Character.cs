@@ -21,13 +21,12 @@ public class Character : MonoBehaviour
     void Start()
     {
         Player.OnRootGiven += OnRootAquired;
-        /*GameManager.OnTimerRunOut += */
         getRootCoroutine = StartCoroutine(AskForRoot());
     }
 
     private IEnumerator AskForRoot()
     {
-        while (GameManager.instance.levelTimer > 0)
+        while (GameManager.instance.isPlaying)
         {
             if (timerFillCoroutine != null)
             {
@@ -40,7 +39,6 @@ public class Character : MonoBehaviour
            
             yield return new WaitForSeconds(timer);
         }
-        mainCanvas.gameObject.SetActive(false);
     }
 
     private IEnumerator FillTimerImage()
@@ -56,9 +54,20 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void OnRootAquired(Character character)
+    private void OnRootAquired(Character character, Root root)
     {
-        if (this.leftCharacter == character.leftCharacter)
+        GameManager.instance.UpdateRootCounter();
+
+        if(root.rootType == requiredRootType)
+        {
+            //play good animation
+        }
+        else
+        {
+            //bd animation
+        }
+
+        if (leftCharacter == character.leftCharacter)
         {
             mainCanvas.transform.DOScale(1.1f, 0.2f).SetLoops(2, LoopType.Yoyo);
             StopCoroutine(getRootCoroutine);

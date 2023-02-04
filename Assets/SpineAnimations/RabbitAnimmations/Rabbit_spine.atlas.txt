@@ -1,0 +1,146 @@
+
+Rabbit_spine.png
+size: 1001,213
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 377, 71
+  size: 228, 138
+  orig: 228, 138
+  offset: 0, 0
+  index: -1
+Ear1
+  rotate: true
+  xy: 288, 5
+  size: 48, 114
+  orig: 48, 114
+  offset: 0, 0
+  index: -1
+Ear2
+  rotate: true
+  xy: 174, 9
+  size: 40, 110
+  orig: 40, 110
+  offset: 0, 0
+  index: -1
+Eyes
+  rotate: false
+  xy: 898, 30
+  size: 77, 35
+  orig: 77, 35
+  offset: 0, 0
+  index: -1
+Eyes_closed
+  rotate: true
+  xy: 866, 28
+  size: 87, 28
+  orig: 87, 28
+  offset: 0, 0
+  index: -1
+Head
+  rotate: true
+  xy: 609, 75
+  size: 134, 101
+  orig: 134, 101
+  offset: 0, 0
+  index: -1
+Leg_back1
+  rotate: false
+  xy: 4, 5
+  size: 84, 44
+  orig: 84, 44
+  offset: 0, 0
+  index: -1
+Leg_back2
+  rotate: true
+  xy: 748, 4
+  size: 72, 46
+  orig: 72, 46
+  offset: 0, 0
+  index: -1
+Leg_front1
+  rotate: true
+  xy: 898, 69
+  size: 46, 81
+  orig: 46, 81
+  offset: 0, 0
+  index: -1
+Leg_front2
+  rotate: true
+  xy: 92, 5
+  size: 44, 78
+  orig: 44, 78
+  offset: 0, 0
+  index: -1
+Stroke_Body
+  rotate: false
+  xy: 4, 53
+  size: 246, 156
+  orig: 246, 156
+  offset: 0, 0
+  index: -1
+Stroke_Ear1
+  rotate: true
+  xy: 612, 5
+  size: 66, 132
+  orig: 66, 132
+  offset: 0, 0
+  index: -1
+Stroke_Ear2
+  rotate: false
+  xy: 714, 80
+  size: 58, 129
+  orig: 58, 129
+  offset: 0, 0
+  index: -1
+Stroke_Head
+  rotate: true
+  xy: 254, 57
+  size: 152, 119
+  orig: 152, 119
+  offset: 0, 0
+  index: -1
+Stroke_Leg_back1
+  rotate: false
+  xy: 406, 5
+  size: 102, 62
+  orig: 102, 62
+  offset: 0, 0
+  index: -1
+Stroke_Leg_back2
+  rotate: true
+  xy: 864, 119
+  size: 90, 64
+  orig: 90, 64
+  offset: 0, 0
+  index: -1
+Stroke_Leg_front1
+  rotate: false
+  xy: 798, 7
+  size: 64, 99
+  orig: 64, 99
+  offset: 0, 0
+  index: -1
+Stroke_Leg_front2
+  rotate: true
+  xy: 512, 5
+  size: 62, 96
+  orig: 62, 96
+  offset: 0, 0
+  index: -1
+Stroke_tail
+  rotate: false
+  xy: 776, 110
+  size: 84, 99
+  orig: 84, 99
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: false
+  xy: 932, 128
+  size: 65, 81
+  orig: 65, 81
+  offset: 0, 0
+  index: -1

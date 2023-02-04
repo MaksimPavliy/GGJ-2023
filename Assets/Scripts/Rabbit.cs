@@ -23,6 +23,5 @@ public class Rabbit : Player
     {
         base.Interract(ctx);
 
-
     }
 }

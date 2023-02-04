@@ -10,13 +10,15 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameMode gameMode = GameMode.StoryMode;
     public NetworkMode networkMode = NetworkMode.Local;
-    public float levelTimer;
 
-    public static UnityAction OnTimerRunOut;
+    public int requiredRootsAmount;
+    private int collectedRootsAmount;
+
+    public static UnityAction OncollectedCounterUpdated;
 
     private void Awake()
     {
-        StartCoroutine(DecreaseLeveTimer());
+        isPlaying = true;
 
         if (instance == null)
         { 
@@ -29,14 +31,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator DecreaseLeveTimer()
+    public void UpdateRootCounter()
     {
-        while(levelTimer > 0)
+        if (collectedRootsAmount < requiredRootsAmount)
         {
-            levelTimer -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            OncollectedCounterUpdated?.Invoke();
         }
-        /*OnTimerRunOut?.Invoke();*/
+        collectedRootsAmount++;
+        if (collectedRootsAmount >= requiredRootsAmount)
+        {
+            WinGame();
+        }
+    }
+
+    public void WinGame()
+    {
+
+    }
+
+    public void LoseGame()
+    {
+
     }
 
     private void SetGameMode(GameMode gameMode)

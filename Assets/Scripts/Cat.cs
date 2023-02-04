@@ -15,6 +15,5 @@ public class Cat : Player
     {
         base.Interract(ctx);
 
-
     }
 }
