@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameMode gameMode = GameMode.StoryMode;
     public NetworkMode networkMode = NetworkMode.Local;
 
-    public int requiredRootsAmount;
+    public float requiredRootsAmount;
     private int collectedRootsAmount;
 
     public static UnityAction OncollectedCounterUpdated;

@@ -82,7 +82,7 @@ public class Root : MonoBehaviour
             transform.SetParent(player.transform, true);
             ChangeRendererAlpha(0, false);
             bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);
-            rotCoroutine = StartCoroutine(Rot(rotDuration / 2));
+            //rotCoroutine = StartCoroutine(Rot(rotDuration / 2));
             var pickupRotation = player.transform.rotation == Quaternion.Euler(0, 0, 0) ? new Vector3(0, 0, 90) : new Vector3(0, 0, -90);
             transform.DOJump(player.rootPickupAnchor.position, jumpPower, numOfJumps, jumpDuration)
                 .Join(transform.DORotate(pickupRotation, jumpDuration))

@@ -7,28 +7,52 @@ using UnityEngine.Events;
 public class Sun : MonoBehaviour
 {
     [SerializeField] private Color dayStartColor;
-    [SerializeField] private  Color dayEndColor;
+    [SerializeField] private Color dayEndColor;
     [SerializeField] private Color dayMiddleColor;
-    [SerializeField] private Transform sunEndTransform;
+    [SerializeField] private Vector3 sunMidPos;
+    [SerializeField] private Vector3 sunEndPos;
 
     private Light sunlight;
-    private float dayTimer;
-    public static UnityAction OnMiddleReached;
+    private Vector3 moveValueMid;
+    private Vector3 moveValueEnd;
+    private Vector3 curPosition;
+    private Color colorValueMid;
+    private Color colorValueEnd;
+    private Color curColor;
 
     private void Start()
     {
         sunlight = GetComponent<Light>();
-        ImmitateDateTimeFlow();
+        GameManager.OncollectedCounterUpdated += MoveSun;
+        moveValueMid = (sunMidPos - transform.position) / (GameManager.instance.requiredRootsAmount / 2);
+        colorValueMid = (dayMiddleColor - dayStartColor) / (GameManager.instance.requiredRootsAmount / 2);
+        moveValueEnd = sunEndPos - transform.position / (GameManager.instance.requiredRootsAmount / 2);
+        colorValueEnd = (dayMiddleColor - dayEndColor) / (GameManager.instance.requiredRootsAmount / 2);
+        curPosition = transform.position;
+        curColor = sunlight.color;
     }
 
-    private void ImmitateDateTimeFlow()
+    private void MoveSun()
     {
-        /*transform.DOJump(sunEndTransform.position, 3f, 1, dayTimer).SetEase(Ease.Linear);
+        Sequence sunSequence = DOTween.Sequence();
 
-        Sequence daySequence = DOTween.Sequence();
-
-        daySequence.Append(sunlight.DOColor(dayMiddleColor, dayTimer / 2).OnComplete(() => OnMiddleReached?.Invoke()));
-        daySequence.Append(sunlight.DOColor(dayEndColor, dayTimer / 2));
-        daySequence.Play();*/
+        if (curPosition != sunMidPos)
+        {
+            curPosition += moveValueMid;
+            curColor += colorValueMid;
+            sunSequence.Append(transform.DOMoveX(curPosition.x, 2f).SetEase(Ease.InSine));
+            sunSequence.Join(transform.DOMoveY(curPosition.y, 2f).SetEase(Ease.InSine));
+            sunSequence.Join(sunlight.DOColor(curColor, 2).SetEase(Ease.Linear));
+            sunSequence.Play();
+        }
+        else if (curPosition != sunEndPos)
+        {
+            curPosition = new Vector3(curPosition.x + moveValueMid.x, curPosition.y - moveValueMid.y);
+            curColor -= colorValueMid;
+            sunSequence.Append(transform.DOMoveX(curPosition.x, 2f).SetEase(Ease.InSine));
+            sunSequence.Join(transform.DOMoveY(curPosition.y, 2f).SetEase(Ease.InSine));
+            sunSequence.Join(sunlight.DOColor(curColor, 2).SetEase(Ease.Linear));
+            sunSequence.Play();
+        }
     }
 }
