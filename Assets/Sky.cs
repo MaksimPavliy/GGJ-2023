@@ -7,16 +7,22 @@ public class Sky : MonoBehaviour
 {
     [SerializeField] private Transform endPosTransform;
 
-    private float dayTimer;
+    private Vector3 moveValue;
+    private Vector3 curPosition;
 
     void Start()
     {
-        dayTimer = GameManager.instance.levelTimer;
-        Sun.OnMiddleReached += MoveSky;
+        GameManager.OncollectedCounterUpdated += MoveSky;
+        moveValue = (endPosTransform.position - transform.position) / GameManager.instance.requiredRootsAmount / 3;
+        curPosition = transform.position;
     }
 
     private void MoveSky()
     {
-        transform.DOMove(endPosTransform.position, dayTimer / 2).SetEase(Ease.Linear);
+        if (curPosition != endPosTransform.position)
+        {
+            curPosition += moveValue;
+        }
+        transform.DOMove(curPosition + moveValue, 1f).SetEase(Ease.Linear);
     }
 }

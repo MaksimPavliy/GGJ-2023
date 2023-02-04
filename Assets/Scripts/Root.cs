@@ -49,7 +49,10 @@ public class Root : MonoBehaviour
         scaleSequence.Play();
 
         hasGrown = true;
-        rotCoroutine = StartCoroutine(Rot(rotDuration));
+        if (rootType != RootType.Sornyak)
+        {
+            rotCoroutine = StartCoroutine(Rot(rotDuration));
+        }
     }
 
     private IEnumerator Rot(float duration)
@@ -70,21 +73,25 @@ public class Root : MonoBehaviour
 
     public IEnumerator JumpToPlayer(Player player, float digDuration)
     {
-        /*if (rootType == RootType.Sornyak)
-        {
-            Destroy(gameObject);
-        }*/
         StopCoroutine(rotCoroutine);
         yield return new WaitForSeconds(digDuration);
-        transform.SetParent(player.transform, true);
-        ChangeRendererAlpha(0, false);
-        bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);
-        rotCoroutine = StartCoroutine(Rot(rotDuration / 2));
-        var pickupRotation = player.transform.rotation == Quaternion.Euler(0, 0, 0) ? new Vector3(0, 0, 90) : new Vector3(0, 0, -90);
         SetRenderersOrder(4);
-        transform.DOJump(player.rootPickupAnchor.position, jumpPower, numOfJumps, jumpDuration)
-            .Join(transform.DORotate(pickupRotation, jumpDuration))
-            .OnComplete(() => player.SetState(Player.PlayerState.Moving));
+        if (rootType != RootType.Sornyak)
+        {
+            transform.SetParent(player.transform, true);
+            ChangeRendererAlpha(0, false);
+            bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);
+            rotCoroutine = StartCoroutine(Rot(rotDuration / 2));
+            var pickupRotation = player.transform.rotation == Quaternion.Euler(0, 0, 0) ? new Vector3(0, 0, 90) : new Vector3(0, 0, -90);
+            transform.DOJump(player.rootPickupAnchor.position, jumpPower, numOfJumps, jumpDuration)
+                .Join(transform.DORotate(pickupRotation, jumpDuration))
+                .OnComplete(() => player.SetState(Player.PlayerState.Moving));
+        }
+        else
+        {
+            player.SetState(Player.PlayerState.Moving);
+            Destroy(gameObject);
+        }
     }
 
     public IEnumerator JumpToPot(Vector3 targetPos, Character character)

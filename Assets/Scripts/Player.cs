@@ -16,7 +16,7 @@ public abstract class Player : MonoBehaviour
     [SerializeField] private List<Character> characters;
 
     public Transform rootPickupAnchor;
-    public static UnityAction<Character> OnRootGiven;
+    public static UnityAction<Character, Root> OnRootGiven;
 
     protected Vector2 moveInput;
     protected Root pickedRoot;
@@ -99,12 +99,9 @@ public abstract class Player : MonoBehaviour
             {
                 if (IsCharacterClose())
                 {
-                    if (activeCharacter.requiredRootType == pickedRoot.rootType || pickedRoot.rootType == Root.RootType.Buryak)
-                    {
-                        StartCoroutine(pickedRoot.JumpToPot(pot.RootTargetTransform.position, activeCharacter));
-                        pickedRoot = null;
-                        OnRootGiven?.Invoke(activeCharacter);
-                    }
+                    StartCoroutine(pickedRoot.JumpToPot(pot.RootTargetTransform.position, activeCharacter));
+                    OnRootGiven?.Invoke(activeCharacter, pickedRoot);
+                    pickedRoot = null;
                 }
             }
         }
