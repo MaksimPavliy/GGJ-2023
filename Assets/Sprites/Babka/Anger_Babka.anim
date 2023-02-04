@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ded_Anger
+  m_Name: Anger_Babka
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -54,11 +54,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 3f15845411dba4348a2cae051079aba0, type: 3}
+      value: {fileID: 21300000, guid: ccbf799fae616974d809563c8bf2ceda, type: 3}
     - time: 0.26666668
-      value: {fileID: 21300000, guid: 59d8b938ea9185e4c8666fe6c5d3a3af, type: 3}
+      value: {fileID: 21300000, guid: 7d6e160bc5bbd714f9f0723197592187, type: 3}
     - time: 0.53333336
-      value: {fileID: 21300000, guid: 3f15845411dba4348a2cae051079aba0, type: 3}
+      value: {fileID: 21300000, guid: ccbf799fae616974d809563c8bf2ceda, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -85,9 +85,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 3f15845411dba4348a2cae051079aba0, type: 3}
-    - {fileID: 21300000, guid: 59d8b938ea9185e4c8666fe6c5d3a3af, type: 3}
-    - {fileID: 21300000, guid: 3f15845411dba4348a2cae051079aba0, type: 3}
+    - {fileID: 21300000, guid: ccbf799fae616974d809563c8bf2ceda, type: 3}
+    - {fileID: 21300000, guid: 7d6e160bc5bbd714f9f0723197592187, type: 3}
+    - {fileID: 21300000, guid: ccbf799fae616974d809563c8bf2ceda, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

@@ -16,6 +16,6 @@ public class Voron : MonoBehaviour
 
     void Update()
     {
-       transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
+       transform.position = Vector2.MoveTowards(transform.position, target.position, speed);
     }
 }
