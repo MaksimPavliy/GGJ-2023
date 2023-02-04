@@ -73,6 +73,7 @@ public class Root : MonoBehaviour
 
     public IEnumerator JumpToPlayer(Player player, float digDuration)
     {
+        if(rotCoroutine != null)
         StopCoroutine(rotCoroutine);
         yield return new WaitForSeconds(digDuration);
         SetRenderersOrder(4);
@@ -109,6 +110,7 @@ public class Root : MonoBehaviour
 
     private void AddRootToPot()
     {
+        //
         OnRootAddedToPot?.Invoke(this);
     }
 

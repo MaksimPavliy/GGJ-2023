@@ -18,6 +18,9 @@ public class Character : MonoBehaviour
     private Coroutine getRootCoroutine;
     private Coroutine timerFillCoroutine;
 
+    public AudioSource HappySound;
+    public AudioSource AngrySound;
+
     void Start()
     {
         Player.OnRootGiven += OnRootAquired;
@@ -60,11 +63,13 @@ public class Character : MonoBehaviour
 
         if(root.rootType == requiredRootType)
         {
-            //play good animation
+            HappySound.Play();
+            Debug.Log("ddd");
         }
         else
         {
-            //bd animation
+            AngrySound.Play();
+            Debug.Log("ssss");
         }
 
         if (leftCharacter == character.leftCharacter)

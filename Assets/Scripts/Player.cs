@@ -34,9 +34,18 @@ public abstract class Player : MonoBehaviour
     private Spine.AnimationState skeletonAnimationState;
     [SerializeField] private AnimationReferenceAsset idle, walk, dig, attack;
 
+
+   
+    public AudioSource WalkingSound;
+    public AudioSource DigingSound;
+    public AudioSource Jump;
+
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        
+
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         skeletonAnimation = GetComponent<SkeletonAnimation>();
@@ -50,10 +59,17 @@ public abstract class Player : MonoBehaviour
             if (skeletonAnimation.AnimationName != walk.name && rb.velocity != Vector2.zero)
             {
                 skeletonAnimationState.SetAnimation(0, walk, true);
+                WalkingSound.Play();
+                DigingSound.Pause();
+                
+                
+
             }
             else if (skeletonAnimation.AnimationName != idle.name && rb.velocity == Vector2.zero)
             {
                 skeletonAnimationState.SetAnimation(0, idle, true);
+                WalkingSound.Pause();
+                DigingSound.Pause();
             }
         }
     }
@@ -86,7 +102,9 @@ public abstract class Player : MonoBehaviour
             {
                 if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
                 {
+
                     state = PlayerState.Digging;
+                    DigingSound.Play();
                     pickedRoot = closestRidge.root;
                     skeletonAnimationState.SetAnimation(0, dig, false);
                     closestRidge.root = null;
