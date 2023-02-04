@@ -54,12 +54,13 @@ MonoBehaviour:
   rotDuration: 5
   topRenderer: {fileID: 8277154057453273435}
   bottomRenderer: {fileID: 8277154057592700393}
+  catCarryOffset: {x: -0.2, y: 0.1, z: 0}
+  rabbitCarryOffset: {x: 0, y: 0, z: 0}
   spawnOffset: {x: 0, y: 0.1, z: 0}
   growScale: {x: 0.4, y: 0.4, z: 0.4}
   growDuration: 2
   chance: 10
   rootType: 1
-  carryOffset: -0.5
 --- !u!212 &1219232448
 SpriteRenderer:
   m_ObjectHideFlags: 0

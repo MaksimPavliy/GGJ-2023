@@ -14,6 +14,7 @@ public abstract class Player : MonoBehaviour
     [SerializeField] private float minDistanceToCharacter;
     [SerializeField] private Pot pot;
     [SerializeField] private List<Character> characters;
+    [SerializeField] private AnimationReferenceAsset idle, walk, dig, attack;
 
     public Transform rootPickupAnchor;
     public static UnityAction<Character, Root> OnRootGiven;
@@ -32,14 +33,11 @@ public abstract class Player : MonoBehaviour
 
     private SkeletonAnimation skeletonAnimation;
     private Spine.AnimationState skeletonAnimationState;
-    [SerializeField] private AnimationReferenceAsset idle, walk, dig, attack;
 
-
-   
     public AudioSource WalkingSound;
     public AudioSource DigingSound;
     public AudioSource Jump;
-
+    public PlayerCharacter playerCharacter;
 
     private void Awake()
     {
@@ -163,5 +161,11 @@ public abstract class Player : MonoBehaviour
         Moving,
         Digging,
         Attacking
+    }
+
+    public enum PlayerCharacter
+    {
+        Cat,
+        Rabbit
     }
 }
