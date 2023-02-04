@@ -9,6 +9,7 @@ public class Pot : MonoBehaviour
     [SerializeField] private Transform rootTargetTransform;
 
     public Transform RootTargetTransform => rootTargetTransform;
+    public AudioSource BulkSound;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class Pot : MonoBehaviour
 
     private void DestroyRootOnAdd(Root root)
     {
+        BulkSound.Play();
         Destroy(root.gameObject);
     }
 }

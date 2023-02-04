@@ -20,6 +20,8 @@ public class Character : MonoBehaviour
     private Coroutine getRootCoroutine;
     private Coroutine timerFillCoroutine;
     private int xCounter = 0;
+    public AudioSource HappySound;
+    public AudioSource AngrySound;
 
     void Start()
     {
@@ -67,9 +69,11 @@ public class Character : MonoBehaviour
             if (root.rootType == requiredRootType)
             {
                 //play good animation
+                HappySound.Play();
             }
             else
             {
+                AngrySound.Play();
                 xSigns[xCounter].color = Color.red;
                 UpdateXCounter();
                 //bad animation
