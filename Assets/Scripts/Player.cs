@@ -18,6 +18,7 @@ public abstract class Player : MonoBehaviour
 
     public Transform rootPickupAnchor;
     public static UnityAction<Character, Root> OnRootGiven;
+    public static UnityAction<Root> OnRootDigged;
 
     protected Vector2 moveInput;
     protected Root pickedRoot;
@@ -96,12 +97,12 @@ public abstract class Player : MonoBehaviour
             {
                 if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
                 {
-
+                    pickedRoot = closestRidge.root;
+                    OnRootDigged?.Invoke(pickedRoot);
+                    closestRidge.root = null;
                     state = PlayerState.Digging;
                     DigingSound.Play();
-                    pickedRoot = closestRidge.root;
                     skeletonAnimationState.SetAnimation(0, dig, false);
-                    closestRidge.root = null;
                     closestRidge.isEmpty = true;
                     rb.velocity = Vector2.zero;
                     FinishDigging();

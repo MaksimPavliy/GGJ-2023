@@ -10,7 +10,6 @@ public class Character : MonoBehaviour
     [SerializeField] private Image wantedRoot;
     [SerializeField] private Image timerImage;
     [SerializeField] private float timer;
-    [SerializeField] private bool leftCharacter;
     [SerializeField] private Canvas mainCanvas;
     [SerializeField] List<Image> xSigns;
 
@@ -21,9 +20,11 @@ public class Character : MonoBehaviour
     private int xCounter = 0;
     public AudioSource HappySound;
     public AudioSource AngrySound;
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         GameManager.OnWin += OnLevelEnded;
         Player.OnRootGiven += OnRootAquired;
         getRootCoroutine = StartCoroutine(AskForRoot());
@@ -41,11 +42,12 @@ public class Character : MonoBehaviour
             Root root = Root.SpawnRootWithChance(roots);
             requiredRootType = root.rootType;
             wantedRoot.sprite = root.GetComponent<SpriteRenderer>().sprite;
-           
+
             yield return new WaitForSeconds(timer);
-            xSigns[xCounter].color = Color.red; 
+
             UpdateXCounter();
-            //palyBadAnimation;
+            AngrySound.Play();
+            animator.Play("Angry");
         }
     }
 
@@ -55,7 +57,7 @@ public class Character : MonoBehaviour
         float normalizedFillTimer = 0;
 
         while (normalizedFillTimer <= 1f)
-        {           
+        {
             timerImage.fillAmount = normalizedFillTimer;
             normalizedFillTimer += Time.deltaTime / timer;
             yield return null;
@@ -64,19 +66,18 @@ public class Character : MonoBehaviour
 
     private void OnRootAquired(Character character, Root root)
     {
-        if (leftCharacter == character.leftCharacter)
+        if (character == this)
         {
             if (root.rootType == requiredRootType || root.rootType == Root.RootType.Buryak)
             {
-                //play good animation
-                /*HappySound.Play();*/
+                HappySound.Play();
+                animator.Play("Happy");
             }
             else
             {
-                /*AngrySound.Play();*/
-                xSigns[xCounter].color = Color.red;
+                AngrySound.Play();
                 UpdateXCounter();
-                //bad animation
+                animator.Play("Angry");
             }
             GameManager.instance.UpdateRootCounter();
             mainCanvas.transform.DOScale(1.1f, 0.2f).SetLoops(2, LoopType.Yoyo);
@@ -87,6 +88,7 @@ public class Character : MonoBehaviour
 
     private void UpdateXCounter()
     {
+        xSigns[xCounter].gameObject.SetActive(true);
         xCounter++;
 
         if (xCounter >= 3)

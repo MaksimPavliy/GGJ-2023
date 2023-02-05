@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public static UnityAction OnCollectedCounterUpdated;
     public static UnityAction OnWin;
+    public static UnityAction OnLose;
     public int currentLevelId = 0;
     [HideInInspector] public Level curLevel;
 
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void LoadLevel()
+    public void LoadLevel()
     {
         if (currentLevelId < levels.Count)
         {
@@ -61,14 +62,12 @@ public class GameManager : MonoBehaviour
         isPlaying = false;
         OnWin?.Invoke();
         currentLevelId++;
-        LoadLevel();
-        /*Time.timeScale = 0;*/
     }
 
     public void LoseGame()
     {
         isPlaying = false;
-        /*Time.timeScale = 0;*/
+        OnLose?.Invoke();
     }
 
     private void SetGameMode(GameMode gameMode)

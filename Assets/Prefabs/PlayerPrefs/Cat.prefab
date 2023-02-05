@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810117520854220354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 0.72, z: 0}
+  m_LocalPosition: {x: -0.06, y: 0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  minDistanceToDig: 1
+  minDistanceToDig: 1.5
   minDistanceToCharacter: 4
   pot: {fileID: 0}
   characters:
@@ -560,7 +560,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: adc78635320a02244bf896c19c38d71a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d74ace2f38bf5594ba23455fabbad857, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

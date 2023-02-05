@@ -28,7 +28,7 @@ public class Raven : MonoBehaviour
 
     void Start()
     {
-        Root.OnRootDigged += OnTargetRidgeDigged;
+        Player.OnRootDigged += OnTargetRidgeDigged;
         skeletonAnimation = GetComponent<SkeletonAnimation>();
         animationState = skeletonAnimation.AnimationState;
         StartCoroutine(FindRidgeToSteal());
@@ -52,8 +52,6 @@ public class Raven : MonoBehaviour
 
     public void FlyAwayRandomly()
     {
-        Debug.Log(pickedRoot);
-        
         if (!pickedRoot)
         {
             OnScared?.Invoke(this);
@@ -70,11 +68,14 @@ public class Raven : MonoBehaviour
 
     private void FlyToEmptyRidge()
     {
-        targetRidge.root.StopRotting();
-        ChangeRotation(targetRidge.transform.position);
-        animationState.SetAnimation(0, fly, true);
-        transform.DOMove(targetRidge.transform.position + peckOffset, flyTime)
-            .OnComplete(() => peckingCoroutine = StartCoroutine(StartPecking()));
+        if (targetRidge && targetRidge.root)
+        {
+            targetRidge.root.StopRotting();
+            ChangeRotation(targetRidge.transform.position);
+            animationState.SetAnimation(0, fly, true);
+            transform.DOMove(targetRidge.transform.position + peckOffset, flyTime)
+                .OnComplete(() => peckingCoroutine = StartCoroutine(StartPecking()));
+        }
     }
 
 
@@ -101,9 +102,9 @@ public class Raven : MonoBehaviour
 
     private IEnumerator StartPecking()
     {
-        canBeScared = true;
         ChangeRotation(targetRidge.transform.position);
         animationState.SetAnimation(0, dive, true);
+        canBeScared = true;
         yield return new WaitForSeconds(dive.Animation.Duration);
         canBeScared = false;
         pickedRoot = targetRidge.root;
@@ -129,7 +130,9 @@ public class Raven : MonoBehaviour
     {
         if (targetRidge && targetRidge.root == root)
         {
-            StartCoroutine(FindRidgeToSteal());
+            if(peckingCoroutine != null)
+            StopCoroutine(peckingCoroutine);
+            FlyAwayRandomly();
         }
     }
 }
