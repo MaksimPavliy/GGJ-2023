@@ -1,7 +1,7 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using UnityEngine.Events;
 
 public class Root : MonoBehaviour
@@ -17,6 +17,7 @@ public class Root : MonoBehaviour
     public bool HasGrown => hasGrown;
     public static UnityAction<Root> OnRootAddedToPot;
     public static UnityAction<Root> OnRootRotten;
+    public static UnityAction<Root> OnRootDigged;
 
     public Vector3 spawnOffset;
     public Vector3 growScale;
@@ -30,22 +31,24 @@ public class Root : MonoBehaviour
 
     private void Start()
     {
+        Raven.OnScared += RotOnRavenScared;
         ChangeRendererAlpha(0, true);
         StartCoroutine(Grow());
     }
 
     private IEnumerator Grow()
     {
-        yield return new WaitForSeconds(growDuration - 0.5f);
         ChangeRendererAlpha(1, true);
 
         Sequence scaleSequence = DOTween.Sequence();
 
-        scaleSequence.Append(transform.DOScale(growScale, 0.25f));
-        scaleSequence.Append(transform.DOScale(growScale + new Vector3(0.05f, 0.05f, 0.05f), 0.125f));
-        scaleSequence.Append(transform.DOScale(growScale - new Vector3(0.025f, 0.025f, 0.025f), 0.0625f));
-        scaleSequence.Append(transform.DOScale(growScale, 0.0625f));
+        scaleSequence.Append(transform.DOScale(growScale, 1));
+        scaleSequence.Append(transform.DOScale(growScale + new Vector3(0.1f, 0.1f, 0.1f), 0.33f));
+        scaleSequence.Append(transform.DOScale(growScale - new Vector3(0.035f, 0.035f, 0.035f), 0.25f));
+        scaleSequence.Append(transform.DOScale(growScale, 0.15f));
         scaleSequence.Play();
+
+        yield return new WaitForSeconds(growDuration);
 
         hasGrown = true;
         if (rootType != RootType.Sornyak)
@@ -62,7 +65,7 @@ public class Root : MonoBehaviour
 
         while (alpha > 0)
         {
-            bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, alpha);
+            topRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, alpha);
             startingRoat -= Time.deltaTime;
             alpha = startingRoat / duration;
             yield return new WaitForEndOfFrame();
@@ -72,15 +75,15 @@ public class Root : MonoBehaviour
 
     public IEnumerator JumpToPlayer(Player player, float digDuration)
     {
-        if(rotCoroutine != null)
-        StopCoroutine(rotCoroutine);
+        OnRootDigged?.Invoke(this);
+        StopRotting();
         yield return new WaitForSeconds(digDuration);
         SetRenderersOrder(4);
         if (rootType != RootType.Sornyak)
         {
             transform.SetParent(player.transform, true);
             ChangeRendererAlpha(0, false);
-            bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);          
+            bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);
             var pickupRotation = player.transform.rotation == Quaternion.Euler(0, 0, 0) ? new Vector3(0, 0, 90) : new Vector3(0, 0, -90);
             transform.DOJump(player.rootPickupAnchor.position, jumpPower, numOfJumps, jumpDuration)
                 .Join(transform.DORotate(pickupRotation, jumpDuration))
@@ -93,9 +96,21 @@ public class Root : MonoBehaviour
         }
     }
 
+    public void JumpToRaven(Raven raven)
+    {
+        ChangeRendererAlpha(0, false);
+        bottomRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);
+        SetRenderersOrder(5);
+        transform.SetParent(raven.transform, true);
+
+        float duration = 0.75f;
+        transform.DOJump(raven.rootPickupAnchor.position, jumpPower, numOfJumps, duration)
+            .OnComplete(() => raven.FlyAwayRandomly());
+    }
+
     public IEnumerator JumpToPot(Vector3 targetPos, Character character)
     {
-        StopCoroutine(rotCoroutine);
+        StopRotting();
         ChangeRendererAlpha(0, true);
         transform.SetParent(character.transform, true);
         transform.position = character.transform.position;
@@ -108,7 +123,6 @@ public class Root : MonoBehaviour
 
     private void AddRootToPot()
     {
-        //
         OnRootAddedToPot?.Invoke(this);
     }
 
@@ -122,6 +136,24 @@ public class Root : MonoBehaviour
         else
         {
             topRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, value);
+        }
+    }
+
+    public void StopRotting()
+    {
+        if (rotCoroutine != null)
+        {
+            topRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);
+            StopCoroutine(rotCoroutine);
+        }
+    }
+
+    public void RotOnRavenScared(Raven raven)
+    {
+        if (raven.targetRidge.root == this)
+        {
+            StopRotting();
+            rotCoroutine = StartCoroutine(Rot(rotDuration));
         }
     }
 

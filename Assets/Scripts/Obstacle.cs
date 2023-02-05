@@ -5,14 +5,4 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     public int spawnAmount;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }

@@ -1,0 +1,48 @@
+
+Craw.png
+size: 156,165
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Beak
+  rotate: true
+  xy: 131, 5
+  size: 35, 21
+  orig: 35, 21
+  offset: 0, 0
+  index: -1
+Body
+  rotate: true
+  xy: 100, 87
+  size: 74, 49
+  orig: 74, 49
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 86, 4
+  size: 41, 36
+  orig: 41, 36
+  offset: 0, 0
+  index: -1
+Left_Wing
+  rotate: false
+  xy: 4, 78
+  size: 92, 83
+  orig: 92, 83
+  offset: 0, 0
+  index: -1
+Right_Wing
+  rotate: true
+  xy: 4, 4
+  size: 70, 78
+  orig: 70, 78
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: false
+  xy: 100, 44
+  size: 52, 39
+  orig: 52, 39
+  offset: 0, 0
+  index: -1

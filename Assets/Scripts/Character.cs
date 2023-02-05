@@ -13,7 +13,6 @@ public class Character : MonoBehaviour
     [SerializeField] private bool leftCharacter;
     [SerializeField] private Canvas mainCanvas;
     [SerializeField] List<Image> xSigns;
-    /*[SerializeField] private Color redSignColor;*/
 
     [HideInInspector] public Root.RootType requiredRootType;
 
@@ -67,14 +66,14 @@ public class Character : MonoBehaviour
     {
         if (leftCharacter == character.leftCharacter)
         {
-            if (root.rootType == requiredRootType)
+            if (root.rootType == requiredRootType || root.rootType == Root.RootType.Buryak)
             {
                 //play good animation
-                HappySound.Play();
+                /*HappySound.Play();*/
             }
             else
             {
-               // AngrySound.Play();
+                /*AngrySound.Play();*/
                 xSigns[xCounter].color = Color.red;
                 UpdateXCounter();
                 //bad animation
