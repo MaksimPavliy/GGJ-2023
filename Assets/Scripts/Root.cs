@@ -17,7 +17,6 @@ public class Root : MonoBehaviour
     public bool HasGrown => hasGrown;
     public static UnityAction<Root> OnRootAddedToPot;
     public static UnityAction<Root> OnRootRotten;
-    public static UnityAction<Root> OnRootDigged;
 
     public Vector3 spawnOffset;
     public Vector3 growScale;
@@ -75,7 +74,6 @@ public class Root : MonoBehaviour
 
     public IEnumerator JumpToPlayer(Player player, float digDuration)
     {
-        OnRootDigged?.Invoke(this);
         StopRotting();
         yield return new WaitForSeconds(digDuration);
         SetRenderersOrder(4);
@@ -141,10 +139,10 @@ public class Root : MonoBehaviour
 
     public void StopRotting()
     {
-        if (rotCoroutine != null)
+        if (rotCoroutine != null && topRenderer)
         {
-            topRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);
             StopCoroutine(rotCoroutine);
+            topRenderer.color = new Color(topRenderer.color.r, topRenderer.color.g, topRenderer.color.b, 1);
         }
     }
 
@@ -194,6 +192,11 @@ public class Root : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void OnDestroy()
+    {
+        StopRotting();
     }
 
     public enum RootType

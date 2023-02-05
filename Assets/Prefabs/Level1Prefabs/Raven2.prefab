@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyTime: 5
-  minDistanceFromPlayers: 1.5
+  minDistanceFromPlayers: 2.5
   fly: {fileID: 11400000, guid: ac5458ff46b40ca47b1397b9fc233aae, type: 2}
   dive: {fileID: 11400000, guid: 0067a3c899ac1b74cad1c5e32894de35, type: 2}
   resetDuration: 2
@@ -64,6 +64,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   players: []
+  targetRidge: {fileID: 0}
 --- !u!33 &3080132866080095013
 MeshFilter:
   m_ObjectHideFlags: 0
