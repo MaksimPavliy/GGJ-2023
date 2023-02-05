@@ -41,14 +41,14 @@ public class Root : MonoBehaviour
 
         Sequence scaleSequence = DOTween.Sequence();
 
-        scaleSequence.Append(transform.DOScale(growScale, 1));
-        scaleSequence.Append(transform.DOScale(growScale + new Vector3(0.1f, 0.1f, 0.1f), 0.33f));
-        scaleSequence.Append(transform.DOScale(growScale - new Vector3(0.035f, 0.035f, 0.035f), 0.25f));
-        scaleSequence.Append(transform.DOScale(growScale, 0.15f));
+        yield return new WaitForSeconds(growDuration - 1);
+
+        scaleSequence.Append(transform.DOScale(growScale, 0.4f));
+        scaleSequence.Append(transform.DOScale(growScale + new Vector3(0.1f, 0.1f, 0.1f), 0.2f));
+        scaleSequence.Append(transform.DOScale(growScale - new Vector3(0.035f, 0.035f, 0.035f), 0.2f));
+        scaleSequence.Append(transform.DOScale(growScale, 0.2f));
         scaleSequence.Play();
-
-        yield return new WaitForSeconds(growDuration);
-
+    
         hasGrown = true;
         if (rootType != RootType.Sornyak)
         {
@@ -196,6 +196,7 @@ public class Root : MonoBehaviour
 
     private void OnDestroy()
     {
+        DOTween.Kill(this);
         StopRotting();
     }
 

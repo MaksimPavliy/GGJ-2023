@@ -91,36 +91,34 @@ public abstract class Player : MonoBehaviour
 
     protected virtual void Interract(InputAction.CallbackContext ctx)
     {
-        if (GameManager.instance.isPlaying)
+        if (state == PlayerState.Moving || state == PlayerState.Idle)
         {
-            if (state == PlayerState.Moving || state == PlayerState.Idle)
+            if (!pickedRoot)
             {
-                if (!pickedRoot)
+                if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
                 {
-                    if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
-                    {
-                        pickedRoot = closestRidge.root;
-                        OnRootDigged?.Invoke(pickedRoot);
-                        closestRidge.root = null;
-                        state = PlayerState.Digging;
-                        DigingSound.Play();
-                        skeletonAnimationState.SetAnimation(0, dig, false);
-                        closestRidge.isEmpty = true;
-                        rb.velocity = Vector2.zero;
-                        FinishDigging();
-                    }
+                    pickedRoot = closestRidge.root;
+                    OnRootDigged?.Invoke(pickedRoot);
+                    closestRidge.root = null;
+                    state = PlayerState.Digging;
+                    DigingSound.Play();
+                    skeletonAnimationState.SetAnimation(0, dig, false);
+                    closestRidge.isEmpty = true;
+                    rb.velocity = Vector2.zero;
+                    FinishDigging();
                 }
-                if (state != PlayerState.Digging && pickedRoot)
+            }
+            if (state != PlayerState.Digging && pickedRoot)
+            {
+                if (IsCharacterClose())
                 {
-                    if (IsCharacterClose())
-                    {
-                        StartCoroutine(pickedRoot.JumpToPot(pot.RootTargetTransform.position, activeCharacter));
-                        OnRootGiven?.Invoke(activeCharacter, pickedRoot);
-                        pickedRoot = null;
-                    }
+                    StartCoroutine(pickedRoot.JumpToPot(pot.RootTargetTransform.position, activeCharacter));
+                    OnRootGiven?.Invoke(activeCharacter, pickedRoot);
+                    pickedRoot = null;
                 }
             }
         }
+
     }
 
     private Character IsCharacterClose()

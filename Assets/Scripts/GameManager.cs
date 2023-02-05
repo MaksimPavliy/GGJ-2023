@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public static UnityAction OnCollectedCounterUpdated;
     public static UnityAction OnWin;
     public static UnityAction OnLose;
-    public int currentLevelId = 3;
+    public int currentLevelId = 2;
     [HideInInspector] public Level curLevel;
 
     private void Awake()
@@ -36,13 +36,12 @@ public class GameManager : MonoBehaviour
     {
         if (collectedRootsAmount < curLevel.requiredRootsAmount)
         {
+            collectedRootsAmount++;
             OnCollectedCounterUpdated?.Invoke();
         }
-        collectedRootsAmount++;
 
         if (collectedRootsAmount >= curLevel.requiredRootsAmount)
         {
-            isPlaying = false;
             WinGame();
         }
     }
@@ -56,7 +55,6 @@ public class GameManager : MonoBehaviour
         {
             collectedRootsAmount = 0;
             curLevel = Instantiate(levels.Find(x => x.levelId == currentLevelId));
-            Time.timeScale = 1;
             isPlaying = true;
         }
     }
@@ -69,17 +67,15 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        isPlaying = false;
         currentLevelId++;
         DOTween.KillAll();
-        LoadLevel();
+        OnWin?.Invoke();
     }
 
     public void LoseGame()
     {
-        isPlaying = false;
         DOTween.KillAll();
-        LoadLevel();
+        OnLose?.Invoke();
     }
 
     private void SetGameMode(GameMode gameMode)

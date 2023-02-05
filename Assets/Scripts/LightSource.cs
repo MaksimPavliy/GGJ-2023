@@ -62,6 +62,7 @@ public class LightSource : MonoBehaviour
 
     private void OnDestroy()
     {
+        DOTween.Kill(this);
         GameManager.OnCollectedCounterUpdated -= MoveSun;
     }
 }

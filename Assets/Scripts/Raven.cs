@@ -135,4 +135,9 @@ public class Raven : MonoBehaviour
             FlyAwayRandomly();
         }
     }
+
+    private void OnDestroy()
+    {
+        DOTween.Kill(this);
+    }
 }

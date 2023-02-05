@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         GameManager.OnWin += OnLevelEnded;
+        GameManager.OnLose += OnLevelEnded;
         Player.OnRootGiven += OnRootAquired;
         getRootCoroutine = StartCoroutine(AskForRoot());
     }
@@ -100,5 +101,12 @@ public class Character : MonoBehaviour
     private void OnLevelEnded()
     {
         mainCanvas.gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnWin -= OnLevelEnded;
+        GameManager.OnLose -= OnLevelEnded;
+        Player.OnRootGiven -= OnRootAquired;
     }
 }

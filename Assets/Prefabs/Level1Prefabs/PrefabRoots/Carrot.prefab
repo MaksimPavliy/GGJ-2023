@@ -140,7 +140,7 @@ MonoBehaviour:
   bottomRenderer: {fileID: 2830445969868707722}
   spawnOffset: {x: 0, y: 0.1, z: 0}
   growScale: {x: 0.4, y: 0.4, z: 0.4}
-  growDuration: 3.5
+  growDuration: 4
   chance: 10
   rootType: 0
 --- !u!212 &2129773815

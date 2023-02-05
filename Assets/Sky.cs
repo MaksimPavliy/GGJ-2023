@@ -12,7 +12,6 @@ public class Sky : MonoBehaviour
 
     void Start()
     {
-        /*GameManager.OnWin += */
         GameManager.OnCollectedCounterUpdated += MoveSky;
         moveValue = (transform.position.y - endPosY) / GameManager.instance.curLevel.requiredRootsAmount;
         curPosition = transform.position;

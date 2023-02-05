@@ -56,7 +56,7 @@ MonoBehaviour:
   bottomRenderer: {fileID: 8277154057592700393}
   spawnOffset: {x: 0.1, y: 0.1, z: 0}
   growScale: {x: 0.4, y: 0.4, z: 0.4}
-  growDuration: 3.5
+  growDuration: 4
   chance: 10
   rootType: 1
 --- !u!212 &1219232448
