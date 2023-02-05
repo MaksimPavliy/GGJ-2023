@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 2830445969389129461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2830445969247969438}
@@ -134,15 +134,13 @@ MonoBehaviour:
   minSpawnChance: 1
   maxSpawnChance: 11
   jumpPower: 1.5
-  jumpDuration: 1
+  jumpDuration: 0.75
   rotDuration: 5
   topRenderer: {fileID: 2830445969247969437}
   bottomRenderer: {fileID: 2830445969868707722}
-  catCarryOffset: {x: -0.5, y: 0.1, z: 0}
-  rabbitCarryOffset: {x: 0, y: 0, z: 0}
   spawnOffset: {x: 0, y: 0.1, z: 0}
   growScale: {x: 0.4, y: 0.4, z: 0.4}
-  growDuration: 2
+  growDuration: 3.5
   chance: 10
   rootType: 0
 --- !u!212 &2129773815

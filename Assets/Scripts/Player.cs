@@ -43,7 +43,6 @@ public abstract class Player : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         
-
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         skeletonAnimation = GetComponent<SkeletonAnimation>();
@@ -59,9 +58,6 @@ public abstract class Player : MonoBehaviour
                 skeletonAnimationState.SetAnimation(0, walk, true);
                 WalkingSound.Play();
                 DigingSound.Pause();
-                
-                
-
             }
             else if (skeletonAnimation.AnimationName != idle.name && rb.velocity == Vector2.zero)
             {

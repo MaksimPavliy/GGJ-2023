@@ -10,15 +10,21 @@ public class Garden : MonoBehaviour
     [SerializeField] private int obstaclesSpawnAmount;
     [SerializeField] private List<Obstacle> obstacles;
     [SerializeField] private Transform obstacleParent;
-    [SerializeField] private float spawnDelay = 2f;
+    [SerializeField] private float spawnDelay = 4f;
+    [SerializeField] private  List<Raven> ravens;
+    [SerializeField] private float ravensSpawnDelay;
+    [SerializeField] private Transform ravenParent;
+    [SerializeField] private List<Player> players;
 
     private Ridge randomEmptyRidge;
     private List<Ridge> emptyRidges = new List<Ridge>();
+    private int[] randomXValues = { 18, 19, -13, -15, 17, -14 };
 
     void Start()
     {
         SpawnObstaclesOnStart();
         StartCoroutine(SpawnRoots());
+        StartCoroutine(SpawnRavens());
     }
 
     private void SpawnObstaclesOnStart()
@@ -37,7 +43,32 @@ public class Garden : MonoBehaviour
 
                 randomEmptyRidge.root = null;
                 randomEmptyRidge.bc.isTrigger = false;
-                Instantiate(obstacle, randomEmptyRidge.transform.position, obstacle.transform.rotation, obstacleParent);
+
+                int[] randomRotationZ = { 180, 0 };             
+                var randomZ = randomRotationZ[Random.Range(0, randomRotationZ.Length)];
+                var curObstacle = Instantiate(obstacle, randomEmptyRidge.transform.position, Quaternion.Euler(0, 0, randomZ), obstacleParent);
+                float[] randomScaleX = { curObstacle.transform.localScale.x, -curObstacle.transform.localScale.x };
+                var randomX = randomScaleX[Random.Range(0, randomScaleX.Length)];
+                curObstacle.transform.localScale = new Vector3(randomX, curObstacle.transform.localScale.y, curObstacle.transform.localScale.z);
+            }
+        }
+    }
+
+    private IEnumerator SpawnRavens()
+    {
+        yield return new WaitForSeconds(ravensSpawnDelay);
+
+        var randomXValue = Random.Range(0, randomXValues.Length);
+        var randomY = Random.Range(7, 10);
+        var randomX = randomXValues[randomXValue];
+
+        if (ravens.Count > 0)
+        {
+            foreach (var raven in ravens)
+            {
+                var curRaven = Instantiate(raven, new Vector2(randomX, randomY), Quaternion.identity, ravenParent);
+                curRaven.ridges = ridges;
+                curRaven.players = players;
             }
         }
     }

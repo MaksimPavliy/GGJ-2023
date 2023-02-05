@@ -6,42 +6,53 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [HideInInspector] public bool isPlaying;
+    public List<Level> levels;
 
     public static GameManager instance;
     public GameMode gameMode = GameMode.StoryMode;
     public NetworkMode networkMode = NetworkMode.Local;
 
-    public float requiredRootsAmount;
     private int collectedRootsAmount;
 
     public static UnityAction OnCollectedCounterUpdated;
     public static UnityAction OnWin;
+    public int currentLevelId = 0;
+    [HideInInspector] public Level curLevel;
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+        instance = this;
+        LoadLevel();
+    }
+
+    private void Start()
+    {
         isPlaying = true;
-
-        if (instance == null)
-        { 
-            instance = this; 
-        }
-
-        else if (instance == this)
-        { 
-            Destroy(gameObject); 
-        }
     }
 
     public void UpdateRootCounter()
     {
-        if (collectedRootsAmount < requiredRootsAmount)
+        if (collectedRootsAmount < curLevel.requiredRootsAmount)
         {
             OnCollectedCounterUpdated?.Invoke();
         }
         collectedRootsAmount++;
-        if (collectedRootsAmount >= requiredRootsAmount)
+        if (collectedRootsAmount >= curLevel.requiredRootsAmount)
         {
             WinGame();
+        }
+    }
+
+    private void LoadLevel()
+    {
+        if (currentLevelId < levels.Count)
+        {
+            curLevel = Instantiate(levels.Find(x => x.levelId == currentLevelId));
         }
     }
 
@@ -49,6 +60,8 @@ public class GameManager : MonoBehaviour
     {
         isPlaying = false;
         OnWin?.Invoke();
+        currentLevelId++;
+        LoadLevel();
         /*Time.timeScale = 0;*/
     }
 

@@ -409,19 +409,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   minDistanceToDig: 1
-  minDistanceToCharacter: 2
+  minDistanceToCharacter: 4
   pot: {fileID: 0}
   characters:
   - {fileID: 0}
   - {fileID: 0}
-  rootPickupAnchor: {fileID: 4019282920948443728}
-  closestRidge: {fileID: 0}
   idle: {fileID: 11400000, guid: a07e38a1ab87ea240b5d69bde0b8dd0f, type: 2}
   walk: {fileID: 11400000, guid: b0252841843c77f4aa297666c5ae8c0d, type: 2}
   dig: {fileID: 11400000, guid: 74af09570efd6c14bb66cf6d3f1b8c99, type: 2}
   attack: {fileID: 0}
+  rootPickupAnchor: {fileID: 4019282920948443728}
+  closestRidge: {fileID: 0}
   WalkingSound: {fileID: 4609322261046632617}
   DigingSound: {fileID: 5246332273634850583}
+  Jump: {fileID: 0}
+  playerCharacter: 0
 --- !u!114 &1018396560649636798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,7 +587,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1517645006
 MonoBehaviour:
@@ -648,7 +650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5209791040705260410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.75, y: 1, z: 0}
+  m_LocalPosition: {x: -2.15, y: 1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

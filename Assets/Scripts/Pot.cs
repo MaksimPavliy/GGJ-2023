@@ -18,8 +18,8 @@ public class Pot : MonoBehaviour
 
     private void DestroyRootOnAdd(Root root)
     {
-        BulkSound.Play();
         Destroy(root.gameObject);
+        /*BulkSound.Play();*/
     }
 }
 
