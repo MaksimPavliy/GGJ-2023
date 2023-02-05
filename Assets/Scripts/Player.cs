@@ -43,7 +43,7 @@ public abstract class Player : MonoBehaviour
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
-        
+
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         skeletonAnimation = GetComponent<SkeletonAnimation>();
@@ -91,30 +91,33 @@ public abstract class Player : MonoBehaviour
 
     protected virtual void Interract(InputAction.CallbackContext ctx)
     {
-        if (state == PlayerState.Moving || state == PlayerState.Idle)
+        if (GameManager.instance.isPlaying)
         {
-            if (!pickedRoot)
+            if (state == PlayerState.Moving || state == PlayerState.Idle)
             {
-                if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
+                if (!pickedRoot)
                 {
-                    pickedRoot = closestRidge.root;
-                    OnRootDigged?.Invoke(pickedRoot);
-                    closestRidge.root = null;
-                    state = PlayerState.Digging;
-                    DigingSound.Play();
-                    skeletonAnimationState.SetAnimation(0, dig, false);
-                    closestRidge.isEmpty = true;
-                    rb.velocity = Vector2.zero;
-                    FinishDigging();
+                    if (closestRidge && closestRidge.CanBeDigged() && Vector2.Distance(transform.position, closestRidge.transform.position) <= minDistanceToDig)
+                    {
+                        pickedRoot = closestRidge.root;
+                        OnRootDigged?.Invoke(pickedRoot);
+                        closestRidge.root = null;
+                        state = PlayerState.Digging;
+                        DigingSound.Play();
+                        skeletonAnimationState.SetAnimation(0, dig, false);
+                        closestRidge.isEmpty = true;
+                        rb.velocity = Vector2.zero;
+                        FinishDigging();
+                    }
                 }
-            }
-            if (state != PlayerState.Digging && pickedRoot)
-            {
-                if (IsCharacterClose())
+                if (state != PlayerState.Digging && pickedRoot)
                 {
-                    StartCoroutine(pickedRoot.JumpToPot(pot.RootTargetTransform.position, activeCharacter));
-                    OnRootGiven?.Invoke(activeCharacter, pickedRoot);
-                    pickedRoot = null;
+                    if (IsCharacterClose())
+                    {
+                        StartCoroutine(pickedRoot.JumpToPot(pot.RootTargetTransform.position, activeCharacter));
+                        OnRootGiven?.Invoke(activeCharacter, pickedRoot);
+                        pickedRoot = null;
+                    }
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     public static UnityAction OnCollectedCounterUpdated;
     public static UnityAction OnWin;
     public static UnityAction OnLose;
-    public int currentLevelId = 0;
+    public int currentLevelId = 3;
     [HideInInspector] public Level curLevel;
 
     private void Awake()
@@ -28,12 +29,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         instance = this;
-        LoadLevel();
-    }
-
-    private void Start()
-    {
-        isPlaying = true;
+        LoadMainMenu();
     }
 
     public void UpdateRootCounter()
@@ -43,31 +39,47 @@ public class GameManager : MonoBehaviour
             OnCollectedCounterUpdated?.Invoke();
         }
         collectedRootsAmount++;
+
         if (collectedRootsAmount >= curLevel.requiredRootsAmount)
         {
+            isPlaying = false;
             WinGame();
         }
     }
 
     public void LoadLevel()
     {
+        if (curLevel)
+            Destroy(curLevel.gameObject);
+
         if (currentLevelId < levels.Count)
         {
+            collectedRootsAmount = 0;
             curLevel = Instantiate(levels.Find(x => x.levelId == currentLevelId));
+            Time.timeScale = 1;
+            isPlaying = true;
         }
+    }
+
+    public void LoadMainMenu()
+    {
+        currentLevelId = 2;
+        LoadLevel();
     }
 
     public void WinGame()
     {
         isPlaying = false;
-        OnWin?.Invoke();
         currentLevelId++;
+        DOTween.KillAll();
+        LoadLevel();
     }
 
     public void LoseGame()
     {
         isPlaying = false;
-        OnLose?.Invoke();
+        DOTween.KillAll();
+        LoadLevel();
     }
 
     private void SetGameMode(GameMode gameMode)

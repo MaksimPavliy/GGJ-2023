@@ -4,61 +4,84 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public Canvas tutorialCanvas;
-    public Canvas loseCanvas;
-    public Canvas winCanvas;
-    public Canvas pauseCanvas;
+    [SerializeField] GameObject tutorialCanvas;
+    [SerializeField] GameObject winCanvas;
+    [SerializeField] GameObject loseCanvas;
+    [SerializeField] GameObject pauseCanvas;
+    [SerializeField] GameObject mainMenuCanvas;
 
-    public static UIManager instance;
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-
-        else if (instance == this)
-        {
-            Destroy(gameObject);
-        }
-    }
 
     private void Start()
     {
-        GameManager.OnWin += ShowWinCanvas;
-        GameManager.OnLose += ShowLoseCanvas;
+        if (tutorialCanvas)
+        {
+           ShowTutorialCanvas();
+        }
     }
 
-    private void Pause()
+    public void LoadMainMenu()
     {
-        GameManager.instance.isPlaying = false;
-        pauseCanvas.gameObject.SetActive(true);
+        GameManager.instance.LoadMainMenu();
+    }
+
+    public void OnPlayClicked()
+    {
+        mainMenuCanvas.SetActive(true);
+        GameManager.instance.currentLevelId = 0;
+        LoadNextLevel();
+    }
+
+    /*public void CloseGame()
+    {
+        Application.Quit();
+    }*/
+
+    public void ShowTutorialCanvas()
+    {
+        Cursor.visible = true;
         Time.timeScale = 0;
+        tutorialCanvas.gameObject.SetActive(true);
     }
 
-    private void Unpause()
+    public void HideTutorialCanvas()
     {
-        GameManager.instance.isPlaying = true;
-        pauseCanvas.gameObject.SetActive(false);
+        Cursor.visible = false;
         Time.timeScale = 1;
+        tutorialCanvas.SetActive(false);
     }
 
-    private void ShowWinCanvas()
+    /*public void Pause()
     {
-        winCanvas.gameObject.SetActive(true);
+        Cursor.visible = true;
         Time.timeScale = 0;
-    }
+        GameManager.instance.isPlaying = false;
+        pauseCanvas.SetActive(true);
+    }*/
 
-    private void ShowLoseCanvas()
+    /*public void Unpause()
     {
-        loseCanvas.gameObject.SetActive(true);
+        Cursor.visible = false;
+        Time.timeScale = 1;
+        GameManager.instance.isPlaying = true;
+        pauseCanvas.SetActive(true);
+    }*/
+
+    /*public void ShowWinCanvas()
+    {
+        Cursor.visible = true;
         Time.timeScale = 0;
+        winCanvas.SetActive(true);
     }
 
-    private void LoadNextLevel()
+    public void ShowLoseCanvas()
+    {
+        Cursor.visible = true;
+        Time.timeScale = 0;
+        loseCanvas.SetActive(true);
+    }*/
+
+    public void LoadNextLevel()
     {
         GameManager.instance.LoadLevel();
-        Time.timeScale = 1;
     }
 }

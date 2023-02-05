@@ -59,4 +59,9 @@ public class LightSource : MonoBehaviour
             sunSequence.Play();
         }
     }
+
+    private void OnDestroy()
+    {
+        GameManager.OnCollectedCounterUpdated -= MoveSun;
+    }
 }
