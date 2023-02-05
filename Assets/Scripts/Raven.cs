@@ -139,5 +139,6 @@ public class Raven : MonoBehaviour
     private void OnDestroy()
     {
         DOTween.Kill(this);
+        Player.OnRootDigged -= OnTargetRidgeDigged;
     }
 }

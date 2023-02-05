@@ -12,7 +12,6 @@ public class Character : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private Canvas mainCanvas;
     [SerializeField] List<Image> xSigns;
-
     [HideInInspector] public Root.RootType requiredRootType;
 
     private Coroutine getRootCoroutine;
@@ -105,6 +104,7 @@ public class Character : MonoBehaviour
 
     private void OnDestroy()
     {
+        DOTween.Kill(this);
         GameManager.OnWin -= OnLevelEnded;
         GameManager.OnLose -= OnLevelEnded;
         Player.OnRootGiven -= OnRootAquired;

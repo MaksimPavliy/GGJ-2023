@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        isPlaying = false;
         currentLevelId++;
         DOTween.KillAll();
         OnWin?.Invoke();
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void LoseGame()
     {
+        isPlaying = false;
         DOTween.KillAll();
         OnLose?.Invoke();
     }

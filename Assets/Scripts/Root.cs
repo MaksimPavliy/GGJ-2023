@@ -27,6 +27,7 @@ public class Root : MonoBehaviour
     private int numOfJumps = 1;
     private bool hasGrown = false;
     private Coroutine rotCoroutine;
+    private Sequence scaleSequence;
 
     private void Start()
     {
@@ -39,10 +40,9 @@ public class Root : MonoBehaviour
     {
         ChangeRendererAlpha(1, true);
 
-        Sequence scaleSequence = DOTween.Sequence();
-
         yield return new WaitForSeconds(growDuration - 1);
 
+        scaleSequence = DOTween.Sequence();
         scaleSequence.Append(transform.DOScale(growScale, 0.4f));
         scaleSequence.Append(transform.DOScale(growScale + new Vector3(0.1f, 0.1f, 0.1f), 0.2f));
         scaleSequence.Append(transform.DOScale(growScale - new Vector3(0.035f, 0.035f, 0.035f), 0.2f));
@@ -148,7 +148,7 @@ public class Root : MonoBehaviour
 
     public void RotOnRavenScared(Raven raven)
     {
-        if (raven.targetRidge.root == this)
+        if (raven.targetRidge.root == this && this != null)
         {
             StopRotting();
             rotCoroutine = StartCoroutine(Rot(rotDuration));
@@ -196,7 +196,7 @@ public class Root : MonoBehaviour
 
     private void OnDestroy()
     {
-        DOTween.Kill(this);
+        scaleSequence.Kill();
         StopRotting();
     }
 
