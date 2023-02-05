@@ -74,7 +74,7 @@ public class Character : MonoBehaviour
             }
             else
             {
-                AngrySound.Play();
+               // AngrySound.Play();
                 xSigns[xCounter].color = Color.red;
                 UpdateXCounter();
                 //bad animation

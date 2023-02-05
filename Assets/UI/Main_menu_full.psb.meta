@@ -1,0 +1,876 @@
+fileFormatVersion: 2
+guid: d9a1202a29071c145b9982ab92683743
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Volume_white
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 832
+      y: 2278
+      width: 128
+      height: 105
+    spriteID: a7cb0d4be83591d41b1d6decb7dcfe27
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -90, y: 1506}
+  - name: Top_circle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 223
+      y: 3392
+      width: 182
+      height: 190
+    spriteID: 17aa302718c0b1a4690f8c4380622d68
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -674, y: 2679}
+  - name: Sound_button
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 832
+      y: 2856
+      width: 70
+      height: 71
+    spriteID: bdd9ac6e45413d440a46252afc338abe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -2, y: 2422}
+  - name: Sound_line
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 266
+      y: 3606
+      width: 411
+      height: 18
+    spriteID: a7fb0d467f8ff7841b6f2a2c63a76b40
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -511, y: 3143}
+  - name: Settings
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 832
+      y: 2504
+      width: 120
+      height: 108
+    spriteID: 6cb6613432b3e434da1631c4e41e18a8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -910, y: 1571}
+  - name: "\_Reload"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 832
+      y: 2146
+      width: 113
+      height: 124
+    spriteID: fb5ea3acdb218fb469fc5374a4811577
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -284, y: 1740}
+  - name: "Big_blue_button \u043A\u043E\u043F\u0438\u044F"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 565
+      y: 2951
+      width: 376
+      height: 150
+    spriteID: 0c618a9dc7eff794ebecb5ed6d457631
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -420, y: 2567}
+  - name: Pause
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3392
+      width: 211
+      height: 206
+    spriteID: 198cb7fc61347a347a3a86749d45dd09
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -871, y: 2677}
+  - name: Cross
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 3606
+      width: 98
+      height: 97
+    spriteID: f7465f150e0e4a348963d51f18e2fa9d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -782, y: 3469}
+  - name: Play
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 667
+      y: 3207
+      width: 112
+      height: 144
+    spriteID: e496790e91892884b978f16fa28bf7df
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -284, y: 2702}
+  - name: Volume
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 832
+      y: 2391
+      width: 128
+      height: 105
+    spriteID: a9c16fc875b5de74eab17e1dc98cbaff
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 91, y: 2056}
+  - name: Grey_button
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 592
+      y: 3392
+      width: 178
+      height: 142
+    spriteID: 17420f69aec2b2f46a59a2ef1ef7a2b5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -115, y: 3082}
+  - name: Book_white
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 832
+      y: 2620
+      width: 95
+      height: 110
+    spriteID: fcce3ed6656bc3847936e7ed49537f02
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -113, y: 2285}
+  - name: Book
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 832
+      y: 2738
+      width: 95
+      height: 110
+    spriteID: 7bf17485767af7a409b3c3137f1aa5d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -113, y: 2403}
+  - name: Orange_button
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 778
+      y: 3392
+      width: 175
+      height: 142
+    spriteID: a75ebefe7c911ea4f8f5ad164ed30739
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -127, y: 3083}
+  - name: Team_white
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 787
+      y: 3207
+      width: 148
+      height: 104
+    spriteID: 5cef51fe9bf93884b9aa99be67d2c0b8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -326, y: 2870}
+  - name: Team
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3606
+      width: 148
+      height: 104
+    spriteID: a618d2aa5a030b5408dafd62638502ce
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -1109, y: 3269}
+  - name: Blue_button
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 484
+      y: 3207
+      width: 175
+      height: 142
+    spriteID: fca1dbe8220c84249b000d7a1375ff1c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -616, y: 2897}
+  - name: Big_green_button
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3207
+      width: 472
+      height: 177
+    spriteID: 107bbd7f69f9e154fbf891cc83c8e683
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -752, y: 2724}
+  - name: Red_button
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 413
+      y: 3392
+      width: 171
+      height: 187
+    spriteID: 001ede24ad6f18249b7d3c373bbb7ae4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -495, y: 3309}
+  - name: Ornaments
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2146
+      width: 820
+      height: 797
+    spriteID: 90e5d761e7ff03b428368bf9a174691d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -575, y: 2040}
+  - name: Frame
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1092
+      width: 966
+      height: 1046
+    spriteID: a5a41ff31802d1941a340d1c29765204
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -499, y: 1064}
+  - name: Cloud
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2951
+      width: 553
+      height: 248
+    spriteID: 5135fe0c32a92b94ea59e418dd63fb68
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -158, y: 2805}
+  - name: Sky
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1920
+      height: 1080
+    spriteID: 53f9256fa6231b543b0d02f49ea3f334
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Volume_white
+    spriteName: Volume_white
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a7cb0d4be83591d41b1d6decb7dcfe27
+    layerID: 158
+    mosaicPosition: {x: 832, y: 2278}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Top_circle
+    spriteName: Top_circle
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 17aa302718c0b1a4690f8c4380622d68
+    layerID: 159
+    mosaicPosition: {x: 223, y: 3392}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Sound_button
+    spriteName: Sound_button
+    isGroup: 0
+    parentIndex: -1
+    spriteID: bdd9ac6e45413d440a46252afc338abe
+    layerID: 157
+    mosaicPosition: {x: 832, y: 2856}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Sound_line
+    spriteName: Sound_line
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a7fb0d467f8ff7841b6f2a2c63a76b40
+    layerID: 155
+    mosaicPosition: {x: 266, y: 3606}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Settings
+    spriteName: Settings
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6cb6613432b3e434da1631c4e41e18a8
+    layerID: 73
+    mosaicPosition: {x: 832, y: 2504}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: "\_Reload"
+    spriteName: "\_Reload"
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fb5ea3acdb218fb469fc5374a4811577
+    layerID: 139
+    mosaicPosition: {x: 832, y: 2146}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: "Big_blue_button \u043A\u043E\u043F\u0438\u044F"
+    spriteName: "Big_blue_button \u043A\u043E\u043F\u0438\u044F"
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0c618a9dc7eff794ebecb5ed6d457631
+    layerID: 138
+    mosaicPosition: {x: 565, y: 2951}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Pause
+    spriteName: Pause
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 198cb7fc61347a347a3a86749d45dd09
+    layerID: 100
+    mosaicPosition: {x: 4, y: 3392}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Cross
+    spriteName: Cross
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f7465f150e0e4a348963d51f18e2fa9d
+    layerID: 68
+    mosaicPosition: {x: 160, y: 3606}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Play
+    spriteName: Play
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e496790e91892884b978f16fa28bf7df
+    layerID: 23
+    mosaicPosition: {x: 667, y: 3207}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Volume
+    spriteName: Volume
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a9c16fc875b5de74eab17e1dc98cbaff
+    layerID: 94
+    mosaicPosition: {x: 832, y: 2391}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Grey_button
+    spriteName: Grey_button
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 17420f69aec2b2f46a59a2ef1ef7a2b5
+    layerID: 30
+    mosaicPosition: {x: 592, y: 3392}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Book_white
+    spriteName: Book_white
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fcce3ed6656bc3847936e7ed49537f02
+    layerID: 160
+    mosaicPosition: {x: 832, y: 2620}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Book
+    spriteName: Book
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7bf17485767af7a409b3c3137f1aa5d9
+    layerID: 83
+    mosaicPosition: {x: 832, y: 2738}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Orange_button
+    spriteName: Orange_button
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a75ebefe7c911ea4f8f5ad164ed30739
+    layerID: 63
+    mosaicPosition: {x: 778, y: 3392}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Team_white
+    spriteName: Team_white
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5cef51fe9bf93884b9aa99be67d2c0b8
+    layerID: 161
+    mosaicPosition: {x: 787, y: 3207}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Team
+    spriteName: Team
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a618d2aa5a030b5408dafd62638502ce
+    layerID: 117
+    mosaicPosition: {x: 4, y: 3606}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Blue_button
+    spriteName: Blue_button
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fca1dbe8220c84249b000d7a1375ff1c
+    layerID: 31
+    mosaicPosition: {x: 484, y: 3207}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Big_green_button
+    spriteName: Big_green_button
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 107bbd7f69f9e154fbf891cc83c8e683
+    layerID: 19
+    mosaicPosition: {x: 4, y: 3207}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Red_button
+    spriteName: Red_button
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 001ede24ad6f18249b7d3c373bbb7ae4
+    layerID: 61
+    mosaicPosition: {x: 413, y: 3392}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Ornaments
+    spriteName: Ornaments
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 90e5d761e7ff03b428368bf9a174691d
+    layerID: 95
+    mosaicPosition: {x: 4, y: 2146}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Frame
+    spriteName: Frame
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a5a41ff31802d1941a340d1c29765204
+    layerID: 38
+    mosaicPosition: {x: 4, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Cloud
+    spriteName: Cloud
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5135fe0c32a92b94ea59e418dd63fb68
+    layerID: 3
+    mosaicPosition: {x: 4, y: 2951}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Sky
+    spriteName: Sky
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 53f9256fa6231b543b0d02f49ea3f334
+    layerID: 165
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
