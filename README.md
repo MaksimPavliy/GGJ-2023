@@ -2,7 +2,7 @@
 Harvest Hoppers is a fun and engaging couch coop game where you play as one of two cute pets on a mission to collect vegetables for a delicious borsch. The game is set in a colorful world filled with exciting challenges.
 
 ## Gameplay
-In Pet Borsch Adventure, you and your friend play as two adorable pets who have been tasked with collecting vegetables for a tasty borsch. To do this, you will need to work together to overcome obstacles.
+In Harvest Hoppers, you and your friend play as two adorable pets who have been tasked with collecting vegetables for a tasty borsch. To do this, you will need to work together to overcome obstacles.
 
 Each level presents you with a set of vegetables to collect, which are requested by the two characters who will be cooking the borsch. As you collect vegetables, you will need to avoid obstacles and crows that get in your way.
 
