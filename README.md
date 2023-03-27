@@ -1,6 +1,4 @@
 # GGJ-2023 Harvest Hoppers
-
-## Harvest Hoppers
 Harvest Hoppers is a fun and engaging couch coop game where you play as one of two cute pets on a mission to collect vegetables for a delicious borsch. The game is set in a colorful world filled with exciting challenges.
 
 ## Gameplay
